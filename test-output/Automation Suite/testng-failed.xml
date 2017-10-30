@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" verbose="3" name="Failed suite [Automation Suite]">
+  <test name="Smoke(failed)">
+    <parameter name="Category" value="Smoke"/>
+    <parameter name="Machine" value="localhost"/>
+    <parameter name="Browser" value="Chrome"/>
+    <classes>
+      <class name="com.application.tests.InvoiceDiscountTest">
+        <methods>
+          <include name="testDiscount"/>
+          <include name="methodPostCondition"/>
+          <include name="classPostconditions"/>
+          <include name="classPreconditions"/>
+          <include name="suitePreCondition"/>
+        </methods>
+      </class> <!-- com.application.tests.InvoiceDiscountTest -->
+    </classes>
+  </test> <!-- Smoke(failed) -->
+</suite> <!-- Failed suite [Automation Suite] -->

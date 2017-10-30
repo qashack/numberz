@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
+  <test name="Test">
+    <classes>
+      <class name="com.application.tests.LoginLogoutTest"/>
+      <class name="com.application.tests.CreateCompanyTest"/>
+      <class name="com.application.tests.DeleteCompanyTest"/>
+    </classes>
+  </test> <!-- Test -->
+  <test name="Test(failed)">
+    <classes>
+      <class name="com.application.tests.LoginLogoutTest">
+        <methods>
+          <include name="methodPostCondition"/>
+          <include name="classPostconditions"/>
+          <include name="classPreconditions"/>
+          <include name="suitePreCondition"/>
+        </methods>
+      </class> <!-- com.application.tests.LoginLogoutTest -->
+      <class name="com.application.tests.DeleteCompanyTest">
+        <methods>
+          <include name="methodPostCondition"/>
+          <include name="testDeleteCompany"/>
+          <include name="classPostconditions"/>
+          <include name="classPreconditions"/>
+        </methods>
+      </class> <!-- com.application.tests.DeleteCompanyTest -->
+      <class name="com.application.tests.CreateCompanyTest">
+        <methods>
+          <include name="methodPostCondition"/>
+          <include name="testMethod"/>
+          <include name="classPostconditions"/>
+          <include name="classPreconditions"/>
+        </methods>
+      </class> <!-- com.application.tests.CreateCompanyTest -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->

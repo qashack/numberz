@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Automation Suite" verbose="3">
+  <test name="Smoke">
+    <parameter name="Category" value="Smoke"/>
+    <parameter name="Machine" value="localhost"/>
+    <parameter name="Browser" value="Chrome"/>
+    <classes>
+    	<class name="com.application.tests.InvoiceTest"/>
+        <class name="com.application.tests.InvoiceDiscountTest"/>
+    </classes>
+  </test> <!-- Smoke -->
+</suite> <!-- Automation Suite -->
