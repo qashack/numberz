@@ -13,26 +13,11 @@ public class EXP_2_AddADetailedBillByAddingAnExistingVendor extends BaseClass {
 
 	@Test(description = "Add a Item and auto populate other data and generate bill")
 	public void addADetailedBillByAddingAnExistingVendor() {
-		new Login().loginApp(driver);
-		/*
-		 * click on the expenses link
-		 */
 
 		HomePage homePage = new HomePage(driver);
-		homePage.clickGotoExpenseListLink();
-		GenericUtils.delay(2);
-		/*
-		 * click on the Add detailed bill button
-		 */
 		Expenses expenses = new Expenses(driver);
-		expenses.clickAddDetailedBillButton();
-		GenericUtils.delay(2);
-
-		/*
-		 * click on the select or Add vendor
-		 */
-
 		ExpensesBill expensesBill = new ExpensesBill(driver);
+
 		String vendor = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 0);
 		String billNumber = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 1);
 		String expenseType = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 2);
@@ -40,6 +25,27 @@ public class EXP_2_AddADetailedBillByAddingAnExistingVendor extends BaseClass {
 		String paymentTerms = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 4);
 		String paymentMethod = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 5);
 		String itemName = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 6);
+
+		/**
+		 * Login to website using username and password
+		 */
+		new Login().loginApp(driver);
+		/*
+		 * click on the expenses link
+		 */
+
+		homePage.clickGotoExpenseListLink();
+		GenericUtils.delay(2);
+		/*
+		 * click on the Add detailed bill button
+		 */
+
+		expenses.clickAddDetailedBillButton();
+		GenericUtils.delay(2);
+
+		/*
+		 * click on the select or Add vendor
+		 */
 
 		GenericUtils.delay(2);
 		expensesBill.setBillFromTextField(vendor);

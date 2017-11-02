@@ -87,13 +87,22 @@ public class HomePage {
     @FindBy(css = "#homeContainer div:nth-of-type(2) div:nth-of-type(2) div:nth-of-type(2) div div:nth-of-type(1) div:nth-of-type(2) a.btn.btn-green.font-12.font-weight-300")
     @CacheLookup
     private WebElement tryItNow;
+    
+    @FindBy(xpath= "//span[text()='Settings']")
+    @CacheLookup
+    private WebElement settings;
+    
+    @FindBy(xpath= "//div[text()='Company Settings']")
+    private WebElement companysettings;
+    
+    @FindBy(id= "add-invoice-btn-navbar")
+    @CacheLookup
+    private WebElement invoiceAdd;
 
-    public HomePage() {
-    }
+   
 
     public HomePage(WebDriver driver) {
-        this();
-        this.driver = driver;
+               this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
@@ -117,6 +126,13 @@ public class HomePage {
         return this;
     }
 
+    public HomePage clickOnAddInvoiceInInvoice()
+    {
+    	invoiceAdd.click();
+    	return this;
+    }
+    
+    
     /**
      * Click on Add Expense Link.
      *
@@ -146,7 +162,13 @@ public class HomePage {
         addInvoice2.click();
         return this;
     }
-
+    /*
+     * click on settings
+     */
+    public HomePage clickOnSettings() {
+        settings.click();
+        return this;
+    }
     /**
      * Click on Apply For Credit Line Link.
      *
@@ -176,7 +198,14 @@ public class HomePage {
         gotoExpenseList.click();
         return this;
     }
-
+    /*
+     * Click on company settings
+     */
+    public HomePage clickCompanySetting() {
+    	companysettings.click();
+        return this;
+    }
+    
     /**
      * Click on Goto Invoice List Link.
      *

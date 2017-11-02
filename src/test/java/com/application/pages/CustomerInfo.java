@@ -1,5 +1,7 @@
 package com.application.pages;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,134 +9,109 @@ import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 import com.application.libraries.ExcelLibrary;
 import com.application.libraries.GenericUtils;
 import com.application.libraries.JavascriptLibrary;
 
 public class CustomerInfo extends TaxInvoicePage {
-	// private WebDriver driver;
+	WebDriver driver;
 	private int timeout = 15;
 
 	@FindBy(xpath = "//input[@placeholder='Customer Name']")
-	@CacheLookup
 	private WebElement customerName;
 
 	@FindBy(xpath = "//input[@placeholder='Contact Name']")
-	@CacheLookup
 	private WebElement contactName;
 
 	@FindBy(id = "emailTo")
-	@CacheLookup
 	private WebElement emailTo;
 
 	@FindBy(xpath = "//input[@placeholder='Use comma(,) to add multiple emails']")
-	@CacheLookup
 	private WebElement emailcc;
 
 	@FindBy(xpath = "//input[@placeholder='Phone']")
-	@CacheLookup
 	private WebElement phone;
 
 	@FindBy(xpath = "(//div[@class='modal-content']//input[@placeholder='Address Line 1'])[1]")
-	@CacheLookup
 	private WebElement baddressLine1;
 
 	@FindBy(xpath = "(//div[@class='modal-content']//input[@placeholder='Address Line 2'])[1]")
-	@CacheLookup
 	private WebElement baddressLine2;
 
 	@FindBy(xpath = "(//span[@class='col-md-6 no-padding']/input[@placeholder='City'])[1]")
-	@CacheLookup
 	private WebElement bacityName;
 
 	@FindBy(xpath = "(//span[@class='col-md-6 no-padding']/input[@placeholder='Pincode'])[1]")
-	@CacheLookup
 	private WebElement bapincode;
 
 	@FindBy(xpath = "(//div[@class='modal-content']//div[@class='Select-input ']/input)[1]")
-	@CacheLookup
 	private WebElement bastate;
 
 	@FindBy(xpath = "(//div[@class='modal-content']//div[@class='Select-placeholder' and text()='State']/..//span[@class='Select-arrow'])[1]")
-	@CacheLookup
 	private WebElement bastatearrow;
 
-	@FindBy(xpath = "(//div[@class='modal-content']//div[@class='Select-placeholder' and text()='State']/..//span[@class='Select-arrow'])[2]")
-	@CacheLookup
+	@FindBy(xpath = "(//div[@class='modal-content']//div[@class='Select-placeholder' and text()='State']/..//span[@class='Select-arrow'])[1]")
 	private WebElement sastatearrow;
 
 	@FindBy(xpath = "(//div[@class='modal-content']//div[@class='Select-value'])[1]")
-	@CacheLookup
 	private WebElement banation;
 
 	@FindBy(xpath = "(//div[@class='modal-content']//input[@placeholder='Address Line 1'])[2]")
-	@CacheLookup
 	private WebElement saddressLine1;
 
 	@FindBy(xpath = "(//div[@class='modal-content']//input[@placeholder='Address Line 2'])[2]")
-	@CacheLookup
 	private WebElement saddressLine2;
 
 	@FindBy(xpath = "(//span[@class='col-md-6 no-padding']/input[@placeholder='City'])[2]")
-	@CacheLookup
 	private WebElement sacityName;
 
 	@FindBy(xpath = "(//div[@class='modal-content']//span[@class='col-md-6 no-padding']/input[@placeholder='Pincode'])[2]")
-	@CacheLookup
 	private WebElement sapincode;
 
-	@FindBy(xpath = "(//div[@class='modal-content']//div[@class='Select-input ']/input)[2]")
-	@CacheLookup
+	@FindBy(xpath = "(//div[@class='modal-content']//div[@class='Select-input ']/input)[3]")
 	private WebElement sastate;
 
-	@FindBy(xpath = "(//div[@class='modal-content']//div[@class='Select-value'])[2]")
-	@CacheLookup
+	@FindBy(xpath = "(//div[@class='modal-content']//div[@class='Select-input ']/input)[4]")
 	private WebElement sanation;
 
+	@FindBy(xpath = "(//div[@class='modal-content']//span[@class='Select-arrow'])[4]")
+	private WebElement sanationarrow;
+
 	@FindBy(xpath = "//div[@class='modal-content']//select[@class='form-control grey-border border-radius-6 height-40 font-12']")
-	@CacheLookup
 	private WebElement curency;
 
 	@FindBy(id = "pan-number")
-	@CacheLookup
 	private WebElement panNumber;
 
 	@FindBy(id = "servicetax-number")
-	@CacheLookup
 	private WebElement serviceTaxnumber;
 
 	@FindBy(id = "tin-number")
-	@CacheLookup
 	private WebElement tinNumber;
 
 	@FindBy(id = "gstin-number")
-	@CacheLookup
 	private WebElement gstinNumber;
 
 	@FindBy(id = "default-tds")
-	@CacheLookup
 	private WebElement tds;
 
 	@FindBy(xpath = "(//div[@class='modal-content']//div[@class='react-toggle-thumb'])[1]")
-	@CacheLookup
 	private WebElement showTDS;
 
 	@FindBy(xpath = "(//div[@class='modal-content']//div[@class='react-toggle-thumb'])[2]")
-	@CacheLookup
 	private WebElement composition_customer;
 
 	@FindBy(xpath = "//div[@class='modal-content']//textarea[@placeholder='Add notes about the customer...']")
-	@CacheLookup
 	private WebElement notes;
 
-	public CustomerInfo() {
-
-	}
+	@FindBy(xpath = "//div[@class='modal-content']//span[@class='font-12']/input")
+	private WebElement sezDeveloper;
 
 	public CustomerInfo(WebDriver driver) {
-		super.driver = driver;
-
+		super(driver);
+		this.driver = driver;
 		PageFactory.initElements(driver, this);
 
 	}
@@ -213,8 +190,10 @@ public class CustomerInfo extends TaxInvoicePage {
 	 * Fill Billing Nation name
 	 */
 	public CustomerInfo fillShipAddressNation(String address) {
-
+		sanationarrow.click();
+		GenericUtils.delay(2);
 		sanation.sendKeys(address);
+		GenericUtils.sendEnterKeys(driver);
 		return this;
 	}
 
@@ -222,9 +201,9 @@ public class CustomerInfo extends TaxInvoicePage {
 	 * Fill Shipping state name
 	 */
 	public CustomerInfo fillShipAddressState(String address) {
-		GenericUtils.delay(2);
-		sastatearrow.click();
 
+		sastatearrow.click();
+		GenericUtils.delay(2);
 		sastate.sendKeys(address);
 		GenericUtils.sendEnterKeys(driver);
 		return this;
@@ -403,12 +382,12 @@ public class CustomerInfo extends TaxInvoicePage {
 		fillShipAddressLine2(addresl12[1]);
 		fillShipAddressCity(city[num]);
 		fillShipAddressPincode(pincode);
-		// fillShipAddressState(state[num]);
+		fillShipAddressState(state[num]);
 
 		return this;
 	}
 
-	public CustomerInfo addAllTaxPan(String filePath, String sheetName) {
+	public CustomerInfo addAllTaxPanGSt(String filePath, String sheetName) {
 		String panno = ExcelLibrary.getExcelData(filePath, sheetName, 1, 12);
 		String stax = ExcelLibrary.getExcelData(filePath, sheetName, 1, 13);
 		String tinno = ExcelLibrary.getExcelData(filePath, sheetName, 1, 14);
@@ -429,9 +408,14 @@ public class CustomerInfo extends TaxInvoicePage {
 	}
 
 	public CustomerInfo clickOnYesButton() {
-		driver.findElement(By.xpath(
-				"//div[@class='modal-content']//button[@class='btn btn-modal-blue font-12 uppercase' and text()='Yes']"))
-				.click();
+		boolean status = verifyPopUp();
+		if (status) {
+
+		} else {
+			driver.findElement(By.xpath(
+					"//div[@class='modal-content']//button[@class='btn btn-modal-blue font-12 uppercase' and text()='Yes']"))
+					.click();
+		}
 		return this;
 	}
 
@@ -441,4 +425,28 @@ public class CustomerInfo extends TaxInvoicePage {
 		return this;
 	}
 
+	private boolean verifyPopUp() {
+		boolean status;
+		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+		int size = driver.findElements(By.className("toast-message")).size();
+
+		System.out.println("size" + size);
+
+		if (size > 0) {
+
+			status = true;
+		} else {
+
+			status = false;
+		}
+		driver.manage().timeouts().implicitlyWait(
+				Long.parseLong(GenericUtils.getConfigProperties("config/config.properties", "IMPLICIT_WAIT")),
+				TimeUnit.SECONDS);
+		return status;
+	}
+
+	public CustomerInfo clickOnSezDeveloper() {
+		sezDeveloper.click();
+		return this;
+	}
 }

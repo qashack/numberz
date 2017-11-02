@@ -3,6 +3,8 @@ package com.application.pages;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
+
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -11,6 +13,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import com.application.libraries.JavascriptLibrary;
 import com.application.tests.EXP_1_AddADetailedBillByAddingANewVendor;
 
 import org.openqa.selenium.By;
@@ -21,19 +24,43 @@ public class ExpensesBill {
 	private Map<String, String> data;
 	private WebDriver driver;
 	private int timeout = 15;
-	
-	//----------------
+
+	// ----------------
 	@FindBy(xpath = "//div[contains(@class,'Select-arrow-zone')]//span[@class='Select-arrow']")
 	private WebElement expenseTypeDropDownButton;
-	
-	@FindBy(id = "Select-Input-undefined")
+
+	@FindBy(xpath = "//div[@class='Select-placeholder' and text()='Add New']/../div[@class='Select-input ']/input")
 	private WebElement expenseTypebtn;
-	
+
+	@FindBy(xpath = "//label[text()='Expense Type']/..//span[@class='Select-arrow']")
+	private WebElement expenseTypebtnArrowBtn;
+
 	public void clickexpenseTypebtn() {
-		expenseTypebtn.sendKeys(null);
+		expenseTypebtnArrowBtn.click();
+		JavascriptLibrary.javascriptClickElement(driver, expenseTypebtnArrowBtn);
 	}
-	
-	//---------------------
+
+	public void checkOptionExistsOrNot(String val) {
+		String checkOption = "//div[@id='bill-expense-type']//div[@class='Select-menu']//span[text()='" + val + "']";
+		int actual = driver.findElements(By.xpath(checkOption)).size();
+		int expected = 1;
+		Assert.assertEquals(actual, expected);
+	}
+
+	// public void checkOptionIsThere(WebDriver driver ){
+	// driver.findElements()
+	// }
+
+	@FindBy(xpath = ".//*[@id='LineItemTable']/tbody/tr/td[2]/div/div/div[1]")
+	private WebElement ItemNameTextField;
+
+	public void clickItemNameTextField() {
+		ItemNameTextField.click();
+		// JavascriptLibrary.javascriptClickElement(driver,
+		// expenseTypebtnArrowBtn);
+	}
+
+	// ---------------------
 
 	@FindBy(id = "bill-ref-number")
 	private WebElement bill;
@@ -144,10 +171,10 @@ public class ExpensesBill {
 	@FindBy(className = "Select-arrow")
 	private WebElement tax;
 
-	@FindBy(className = "Select-arrow")
+	@FindBy(xpath = "//table[@id='LineItemTable']/tbody/tr/td[10]/select")
 	private WebElement purchaseType;
 
-	@FindBy(className = "Select-arrow")
+	@FindBy(xpath = "//table[@id='LineItemTable']/tbody/tr/td[11]/select")
 	private WebElement taxCredit;
 
 	@FindBy(xpath = "//div[contains(@class,'CreateInvoiceContainer')]//div[@class='Select-menu-outer']//*[contains(text(),'Add New Vendor')]")
@@ -971,10 +998,14 @@ public class ExpensesBill {
 	}
 
 	public String getRandomStringfromArray(String arryOfString, int index) {
-
 		String[] arryOfexpenseType = arryOfString.split(",");
 		String str = arryOfexpenseType[index];
-		System.out.println(str);
+		return str;
+	}
+
+	public String generateRandomBillNumber() {
+		Random rand = new Random();
+		String str = Integer.toString(rand.nextInt(10000));
 		return str;
 	}
 

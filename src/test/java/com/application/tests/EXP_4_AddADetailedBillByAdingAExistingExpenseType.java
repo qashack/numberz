@@ -14,6 +14,29 @@ public class EXP_4_AddADetailedBillByAdingAExistingExpenseType extends BaseClass
 
 	@Test(description = "")
 	public void addADetailedBillByAdingAExistingExpenseType() {
+
+		HomePage homePage = new HomePage(driver);
+		ExpensesBill bill = new ExpensesBill(driver);
+		Expenses expenses = new Expenses(driver);
+		ExpensesBill expensesBill = new ExpensesBill(driver);
+
+		String vendor = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 0);
+		String billNumber = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 1);
+		String expenseType = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 2);
+		String paymentTerms = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 3);
+		String paymentMethod = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 4);
+		String itemName = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 5);
+		// String price = ExcelLibrary.getExcelData(filePath_Expence,
+		// expensesSheet, 1, 4);
+		// String quantity = ExcelLibrary.getExcelData(filePath_Expence,
+		// expensesSheet, 1, 5);
+		// String tax = ExcelLibrary.getExcelData(filePath_Expence,
+		// expensesSheet, 1, 6);
+		// String purchaseType = ExcelLibrary.getExcelData(filePath_Expence,
+		// expensesSheet, 1, 7);
+		// String taxCredit = ExcelLibrary.getExcelData(filePath_Expence,
+		// expensesSheet, 1, 8);
+
 		/**
 		 * Login to website using username and password
 		 */
@@ -23,14 +46,12 @@ public class EXP_4_AddADetailedBillByAdingAExistingExpenseType extends BaseClass
 		 * click on the expenses link
 		 */
 
-		HomePage homePage = new HomePage(driver);
 		homePage.clickGotoExpenseListLink();
 		GenericUtils.delay(2);
 		/*
 		 * click on the Add detailed bill button
 		 */
-		ExpensesBill bill = new ExpensesBill(driver);
-		Expenses expenses = new Expenses(driver);
+
 		expenses.clickAddDetailedBillButton();
 		GenericUtils.delay(3);
 		bill.dropdownSelectOrAddVendorClick();
@@ -39,19 +60,6 @@ public class EXP_4_AddADetailedBillByAdingAExistingExpenseType extends BaseClass
 		/*
 		 * click on the select or Add vendor
 		 */
-
-		ExpensesBill expensesBill = new ExpensesBill(driver);
-		String vendor = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 0);
-		String billNumber = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 1);
-		String expenseType = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 2);
-		String paymentTerms = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 3);
-		String paymentMethod = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 4);
-		String itemName = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 5);
-		String price = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 4);
-		String quantity = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 5);
-		String tax = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 6);
-		String purchaseType = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 7);
-		String taxCredit = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 8);
 
 		GenericUtils.delay(2);
 		expensesBill.setBillFromTextField(vendor);
@@ -71,6 +79,10 @@ public class EXP_4_AddADetailedBillByAdingAExistingExpenseType extends BaseClass
 		GenericUtils.delay(2);
 
 		expensesBill.setPaymentMethodDropDownListField(paymentMethod);
+		GenericUtils.sendEnterKeys(driver);
+		GenericUtils.delay(2);
+
+		expensesBill.clickItemNameTextField();
 		GenericUtils.sendEnterKeys(driver);
 		GenericUtils.delay(2);
 

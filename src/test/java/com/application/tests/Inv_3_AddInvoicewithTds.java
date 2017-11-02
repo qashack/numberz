@@ -21,9 +21,9 @@ public class Inv_3_AddInvoicewithTds extends BaseClass {
 		// Login
 		new Login().loginApp(driver);
 		// Click on add invoice button
-		GenericUtils.delay(10);
+		GenericUtils.waitForLoadComplete(driver);
 		new HomePage(driver).clickAddInvoice1Link();
-		GenericUtils.delay(10);
+		GenericUtils.waitForLoadComplete(driver);
 		// Select existing customer
 		CustomerInfo customerinfo = new CustomerInfo(driver);
 		customerinfo.setInvoiceToTextField(existingCustomer);
@@ -33,9 +33,9 @@ public class Inv_3_AddInvoicewithTds extends BaseClass {
 		customerinfo.updateTDS(tds);
 		customerinfo.clickOnUpdate();
 		customerinfo.clickOnYesButton();
-
+		GenericUtils.waitForLoadComplete(driver);
 		/*
-		 * Add an item
+		 * Add an item And verify tds amount
 		 */
 		customerinfo.AddAllItem(filePath_invoice, sheetName);
 		customerinfo.verifyTDSAmount();
@@ -44,7 +44,7 @@ public class Inv_3_AddInvoicewithTds extends BaseClass {
 		 * 
 		 */
 		customerinfo.clickSend1Button();
-		GenericUtils.delay(2);
+		GenericUtils.waitForLoadComplete(driver);
 		customerinfo.verifyMessage();
 
 	}

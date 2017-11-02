@@ -1,7 +1,5 @@
 package com.application.tests;
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.testng.annotations.Test;
 import com.application.libraries.ExcelLibrary;
 import com.application.libraries.GenericUtils;
@@ -15,39 +13,44 @@ public class EXP_3_AddADetailedBillByAddingANewExpenseType extends BaseClass {
 
 	@Test(description = "")
 	public void addADetailedBillByAddingANewExpenseType() {
-		new Login().loginApp(driver);
-		GenericUtils.delay(2);
-		/*
-		 * click on the expenses link
-		 */
 
 		HomePage homePage = new HomePage(driver);
-		homePage.clickGotoExpenseListLink();
-		GenericUtils.delay(2);
-		/*
-		 * click on the Add detailed bill button
-		 */
 		Expenses expenses = new Expenses(driver);
-		expenses.clickAddDetailedBillButton();
-		GenericUtils.delay(2);
-
-		/*
-		 * click on the select or Add vendor
-		 */
-
 		ExpensesBill expensesBill = new ExpensesBill(driver);
+
 		String vendor = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 0);
 		String billNumber = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 1);
 		String expenseTypeArray = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 2);
 		int index = GenericUtils.randomNumber("5");
 		String expenseType = expensesBill.getRandomStringfromArray(expenseTypeArray, index);
-		System.out.println(index + " " + expenseType);
 		String itemName = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 3);
 		String price = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 4);
 		String quantity = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 5);
 		String tax = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 6);
 		String purchaseType = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 7);
 		String taxCredit = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 8);
+
+		/**
+		 * Login to website using username and password
+		 */
+		new Login().loginApp(driver);
+		GenericUtils.delay(2);
+		/*
+		 * click on the expenses link
+		 */
+
+		homePage.clickGotoExpenseListLink();
+		GenericUtils.delay(2);
+		/*
+		 * click on the Add detailed bill button
+		 */
+
+		expenses.clickAddDetailedBillButton();
+		GenericUtils.delay(2);
+
+		/*
+		 * click on the select or Add vendor
+		 */
 
 		GenericUtils.delay(2);
 		expensesBill.setBillFromTextField(vendor);
@@ -68,13 +71,14 @@ public class EXP_3_AddADetailedBillByAddingANewExpenseType extends BaseClass {
 
 		expensesBill.clickSaveButton();
 		GenericUtils.delay(2);
-		
+
 		expenses.clickAddDetailedBillButton();
-		GenericUtils.delay(2);
+		GenericUtils.delay(5);
 
 		expensesBill.clickexpenseTypebtn();
 		GenericUtils.delay(2);
-		
+
+		expensesBill.checkOptionExistsOrNot(expenseType);
 
 	}
 
