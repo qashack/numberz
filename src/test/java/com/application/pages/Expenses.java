@@ -92,7 +92,7 @@ public class Expenses {
     @FindBy(css = "#olark-container div:nth-of-type(3) a")
     private WebElement poweredByOlark;
 
-    @FindBy(css = "#expensesContainer div:nth-of-type(2) div:nth-of-type(1) div:nth-of-type(1) div.row.divNav nav.tabNav.col-md-5 ul li:nth-of-type(1) a.center-align")
+    @FindBy(xpath = "//div[@class='row divNav']//a[@class='center-align']")
     private WebElement purchaseOrders;
 
     @FindBy(css = "#expensesContainer div:nth-of-type(2) div:nth-of-type(2) div:nth-of-type(1) div:nth-of-type(1) div:nth-of-type(2) div span.gb-filter-items.uppercase a:nth-of-type(1)")

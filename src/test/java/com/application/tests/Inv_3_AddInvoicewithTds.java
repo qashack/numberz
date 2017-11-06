@@ -44,7 +44,7 @@ public class Inv_3_AddInvoicewithTds extends BaseClass {
 		 * 
 		 */
 		customerinfo.clickSend1Button();
-		GenericUtils.waitForLoadComplete(driver);
+		GenericUtils.delay(3);
 		customerinfo.verifyMessage();
 
 	}

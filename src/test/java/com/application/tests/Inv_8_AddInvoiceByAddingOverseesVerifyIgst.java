@@ -7,13 +7,15 @@ import com.application.libraries.GenericUtils;
 import com.application.pages.CustomerInfo;
 import com.application.pages.HomePage;
 
-public class Inv_5_AddInvoiceVerifyIgst extends BaseClass {
-	String sheetName = "INV_5";
+public class Inv_8_AddInvoiceByAddingOverseesVerifyIgst extends BaseClass {
+	String sheetName = "INV_8";
 	String newCustomer = ExcelLibrary.getExcelData(filePath_invoice, sheetName, 1, 0) + GenericUtils.simpleDate();
 	String email = ExcelLibrary.getExcelData(filePath_invoice, sheetName, 1, 1);
 	String phone = ExcelLibrary.getExcelData(filePath_invoice, sheetName, 1, 2);
-
-	@Test(description = "Add an Invoice by adding/selecting a customer who is in a different state. Verify the IGST section in the Invoice")
+	String nation = ExcelLibrary.getExcelData(filePath_invoice, sheetName, 1, 18);
+	
+	
+	@Test(description = "Add an invoices by selecting the overseas as state and country . Verify the IGST section in the Invoice.")
 	public void addInvoiceNewCustomer() {
 		// Loging to an application
 		new Login().loginApp(driver);
@@ -38,8 +40,11 @@ public class Inv_5_AddInvoiceVerifyIgst extends BaseClass {
 		customerinfo.addAllBillingAddress(filePath_invoice, sheetName);
 		// Add Shipping address
 		customerinfo.addAllShippingAddress(filePath_invoice, sheetName);
+		//Add nation
+		customerinfo.fillShipAddressNation(nation);
+		
 		/*
-		 * Add tds,gst,servicetax
+		 * Add gst and other field
 		 */
 		customerinfo.addAllTaxPanGSt(filePath_invoice, sheetName);
 		customerinfo.clickOnSaveButton();
@@ -61,12 +66,8 @@ public class Inv_5_AddInvoiceVerifyIgst extends BaseClass {
 		 */
 		customerinfo.clickSend1Button();
 		GenericUtils.delay(3);
-		customerinfo.verifyMessage();
-		
-		
-	}
 
-	
-	
+		customerinfo.verifyMessage();
+	}
 
 }

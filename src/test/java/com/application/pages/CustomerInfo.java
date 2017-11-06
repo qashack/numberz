@@ -409,8 +409,9 @@ public class CustomerInfo extends TaxInvoicePage {
 
 	public CustomerInfo clickOnYesButton() {
 		boolean status = verifyPopUp();
+		System.out.println(status);
 		if (status) {
-
+			
 		} else {
 			driver.findElement(By.xpath(
 					"//div[@class='modal-content']//button[@class='btn btn-modal-blue font-12 uppercase' and text()='Yes']"))

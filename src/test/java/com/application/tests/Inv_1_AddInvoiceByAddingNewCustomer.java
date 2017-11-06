@@ -64,14 +64,14 @@ public class Inv_1_AddInvoiceByAddingNewCustomer extends BaseClass{
 		 * 
 		 */
 		customerinfo.clickSend1Button();
-		GenericUtils.delay(2);
+		GenericUtils.delay(3);
 		customerinfo.verifyMessage();
 		/*
 		 * Send an email
 		 */
 		GenericUtils.waitForLoadComplete(driver);
 		customerinfo.clickEmailSendButton();
-		GenericUtils.waitForLoadComplete(driver);
+		GenericUtils.delay(3);
 		customerinfo.verifyMessage();
 		
 		

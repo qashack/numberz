@@ -13,7 +13,7 @@ public class Inv_4_AddInvoiceVerifyCgst extends BaseClass {
 	String email = ExcelLibrary.getExcelData(filePath_invoice, sheetName, 1, 1);
 	String phone = ExcelLibrary.getExcelData(filePath_invoice, sheetName, 1, 2);
 
-	@Test(description = "Add an invoice by adding new customer and verify cgst and sgst")
+	@Test(description = "Add an Invoice by adding/selecting a customer who is in the same same state. Verify the CGST and SGST sections in the Invoice.")
 	public void addInvoiceNewCustomer() {
 		// Loging to an application
 		new Login().loginApp(driver);
@@ -59,7 +59,7 @@ public class Inv_4_AddInvoiceVerifyCgst extends BaseClass {
 		 * 
 		 */
 		customerinfo.clickSend1Button();
-		GenericUtils.waitForLoadComplete(driver);
+		GenericUtils.delay(3);
 		customerinfo.verifyMessage();
 		
 		

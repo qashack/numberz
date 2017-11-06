@@ -4,8 +4,13 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -16,6 +21,9 @@ import org.testng.Assert;
 
 import com.application.libraries.ExcelLibrary;
 import com.application.libraries.GenericUtils;
+import com.sun.org.apache.xerces.internal.parsers.IntegratedParserConfiguration;
+
+import sun.util.resources.cldr.aa.CalendarData_aa_ER;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -489,6 +497,14 @@ public class TaxInvoicePage {
 		return this;
 	}
 
+	/*
+	 * get payment due date
+	 */
+	private String getDueDateTextField() {
+
+		return dueDate.getAttribute("value");
+	}
+
 	/**
 	 * Set default value to Exclusive Of Taxes Radio Button field.
 	 *
@@ -524,41 +540,26 @@ public class TaxInvoicePage {
 	}
 
 	/**
-	 * Set default value to Invoice Text field.
-	 *
-	 * @return the TaxInvoicePage class instance.
-	 */
-	public TaxInvoicePage setInvoice1TextField() {
-		return setInvoice1TextField(data.get("INVOICE_1"));
-	}
-
-	/**
 	 * Set value to Invoice Text field.
 	 *
 	 * @return the TaxInvoicePage class instance.
 	 */
-	public TaxInvoicePage setInvoice1TextField(String invoice1Value) {
+	public TaxInvoicePage clickInvoiceOverideSequence() {
+		GenericUtils.delay(1);
 		if (!invoice1.isSelected()) {
 			invoice1.click();
 		}
+		GenericUtils.delay(2);
 		return this;
 	}
 
 	/**
-	 * Set default value to Invoice Text field.
-	 *
-	 * @return the TaxInvoicePage class instance.
-	 */
-	public TaxInvoicePage setInvoice2TextField() {
-		return setInvoice2TextField(data.get("INVOICE_2"));
-	}
-
-	/**
 	 * Set value to Invoice Text field.
 	 *
 	 * @return the TaxInvoicePage class instance.
 	 */
-	public TaxInvoicePage setInvoice2TextField(String invoice2Value) {
+	public TaxInvoicePage setInvoiceSequenceTextField(String invoice2Value) {
+		invoice2.clear();
 		invoice2.sendKeys(invoice2Value);
 		return this;
 	}
@@ -1012,7 +1013,7 @@ public class TaxInvoicePage {
 		return this;
 	}
 
-	public TaxInvoicePage AddAllItem(String filePath, String sheetName,String item_name) {
+	public TaxInvoicePage AddAllItem(String filePath, String sheetName, String item_name) {
 		GenericUtils.delay(2);
 		System.out.println(item_name);
 		setSelectOrAddAnItemselect1TextareaField(item_name);
@@ -1028,8 +1029,6 @@ public class TaxInvoicePage {
 		return this;
 	}
 
-	
-	
 	public TaxInvoicePage clickOnRoundof() {
 		roundoff.click();
 		return this;
@@ -1042,40 +1041,47 @@ public class TaxInvoicePage {
 	}
 
 	public TaxInvoicePage verifyTDSAmount() {
-		float igstamnt=0;
-		float cgstmnt=0;
-		float sgst=0;
-		float utgstamnt=0;
+		driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+		float igstamnt = 0;
+		float cgstmnt = 0;
+		float sgst = 0;
+		float utgstamnt = 0;
 		float totalAmnt = Float.parseFloat(totalAmount.getText().replaceAll(",", ""));
-		if(driver.findElements(By.xpath("//label[contains(text(),'CGST')]")).size()>0)
-		{
-			 cgstmnt = Float.parseFloat(cgstAmount.getText().replaceAll(",", ""));
-		}if(driver.findElements(By.xpath("//label[contains(text(),'SGST')]")).size()>0){
-			 sgst = Float.parseFloat(sgstAmount.getText().replaceAll(",", ""));
+		if (driver.findElements(By.xpath("//label[contains(text(),'CGST')]")).size() > 0) {
+			cgstmnt = Float.parseFloat(cgstAmount.getText().replaceAll(",", ""));
 		}
-		if(driver.findElements(By.xpath("//label[contains(text(),'IGST')]")).size()>0){
-			 igstamnt = Float.parseFloat(driver.findElement(By.xpath("//label[contains(text(),'IGST')]")).getText());
+		if (driver.findElements(By.xpath("//label[contains(text(),'SGST')]")).size() > 0) {
+			sgst = Float.parseFloat(sgstAmount.getText().replaceAll(",", ""));
 		}
-		if(driver.findElements(By.xpath("//label[contains(text(),'UTGST')]")).size()>0){
-			 utgstamnt = Float.parseFloat(driver.findElement(By.xpath("//label[contains(text(),'UTGST')]")).getText());
+		if (driver.findElements(By.xpath("//label[contains(text(),'IGST')]")).size() > 0) {
+			igstamnt = Float.parseFloat(
+					driver.findElement(By.xpath("//span[@class='tax-lines-smallest-number pull-right']")).getText());
+		}
+		if (driver.findElements(By.xpath("//label[contains(text(),'UTGST')]")).size() > 0) {
+			utgstamnt = Float.parseFloat(
+					driver.findElement(By.xpath("//span[@class='tax-lines-smallest-number pull-right']")).getText());
 		}
 		float tds = Float.parseFloat(TdsAmount.getText().replaceAll(",", ""));
 		float roundoff = Float.parseFloat(roundOfAmnt.getText().replaceAll(",", ""));
 		int netToatl = Integer.parseInt(netTotalAmount.getText().replaceAll(",", ""));
 		System.out.println(netToatl);
 		System.out.println(totalAmnt + " " + cgstmnt + " " + sgst + " " + tds + " " + roundoff);
-		float verifyamnt = (totalAmnt + cgstmnt + sgst+utgstamnt+igstamnt) - tds;
+		float verifyamnt = (totalAmnt + cgstmnt + sgst + utgstamnt + igstamnt) - tds;
+		verifyamnt = verifyamnt + 0.01f;
 		System.out.println("verify amnt" + verifyamnt);
 		int v = (int) (verifyamnt + roundoff);
 		System.out.println("v is" + v);
 		Assert.assertEquals(v, netToatl);
+		driver.manage().timeouts().implicitlyWait(
+				Long.parseLong(GenericUtils.getConfigProperties("config/config.properties", "IMPLICIT_WAIT")),
+				TimeUnit.SECONDS);
 		return this;
 	}
 
 	public TaxInvoicePage verifyGSt(String val) {
 		int i = driver.findElements(By.xpath("//label[contains(text(),'" + val + "')]")).size();
 		System.out.println("vgst" + i);
-		Assert.assertEquals(i, 1,("Gst is not apeared in field: "+val));
+		Assert.assertEquals(i, 1, ("Gst is not apeared in field: " + val));
 		return this;
 	}
 
@@ -1093,51 +1099,99 @@ public class TaxInvoicePage {
 		if (t1 > 0 && t2 > 0 && t3 > 0 & t4 > 0) {
 			Assert.assertTrue(true, "All items feild are populated correctly");
 		} else {
-			Assert.assertFalse(false, "All item fields are not populated correctly");
+			Assert.assertFalse(true, "All item fields are not populated correctly");
 		}
 
 		return this;
 	}
+
 	/*
 	 * Verify discount amount
 	 */
 	public TaxInvoicePage verifyDiscountAmount() {
+		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 		selectOrAddAnItemselect5.click();
-		float igstamnt=0;
-		float cgstmnt=0;
-		float sgst=0;
-		float utgstamnt=0;
+		float igstamnt = 0;
+		float cgstmnt = 0;
+		float sgst = 0;
+		float utgstamnt = 0;
+		float tds = 0;
 		float totalAmnt = Float.parseFloat(totalAmount.getText().replaceAll(",", ""));
-		if(driver.findElements(By.xpath("//label[contains(text(),'CGST')]")).size()>0)
-		{
-			 cgstmnt = Float.parseFloat(cgstAmount.getText().replaceAll(",", ""));
-		}if(driver.findElements(By.xpath("//label[contains(text(),'SGST')]")).size()>0){
-			 sgst = Float.parseFloat(sgstAmount.getText().replaceAll(",", ""));
+		if (driver.findElements(By.xpath("//label[contains(text(),'CGST')]")).size() > 0) {
+			cgstmnt = Float.parseFloat(cgstAmount.getText().replaceAll(",", ""));
 		}
-		if(driver.findElements(By.xpath("//label[contains(text(),'IGST')]")).size()>0){
-			 igstamnt = Float.parseFloat(driver.findElement(By.xpath("//label[contains(text(),'IGST')]")).getText());
+		if (driver.findElements(By.xpath("//label[contains(text(),'SGST')]")).size() > 0) {
+			sgst = Float.parseFloat(sgstAmount.getText().replaceAll(",", ""));
 		}
-		if(driver.findElements(By.xpath("//label[contains(text(),'UTGST')]")).size()>0){
-			 utgstamnt = Float.parseFloat(driver.findElement(By.xpath("//label[contains(text(),'UTGST')]")).getText());
+		if (driver.findElements(By.xpath("//label[contains(text(),'IGST')]")).size() > 0) {
+			igstamnt = Float.parseFloat(
+					driver.findElement(By.xpath("//span[@class='tax-lines-smallest-number pull-right']")).getText());
 		}
-		
-		float tds = Float.parseFloat(TdsAmount.getText().replaceAll(",", ""));
-		float discount=Float.parseFloat(discountAmount.getText().replaceAll(",", ""));
+		if (driver.findElements(By.xpath("//label[contains(text(),'UTGST')]")).size() > 0) {
+			utgstamnt = Float.parseFloat(
+					driver.findElement(By.xpath("//span[@class='tax-lines-smallest-number pull-right']")).getText());
+		}
+		if (driver.findElements(By.xpath("//span[@class='pull-right text-align-right']")).size() > 0) {
+			tds = Float.parseFloat(TdsAmount.getText().replaceAll(",", ""));
+		}
+		float discount = Float.parseFloat(discountAmount.getAttribute("value"));
 		float roundoff = Float.parseFloat(roundOfAmnt.getText().replaceAll(",", ""));
 		int netToatl = Integer.parseInt(netTotalAmount.getText().replaceAll(",", ""));
 		System.out.println(netToatl);
-		System.out.println("discount amount"+discount);
-		totalAmnt=totalAmnt-discount;
-		System.out.println("total amnt"+totalAmnt + " " + cgstmnt + " " + sgst + " " + tds + " " + roundoff);
-		float verifyamnt = (totalAmnt + cgstmnt + sgst+utgstamnt+sgst) - tds;
+		System.out.println("discount amount" + discount);
+		totalAmnt = totalAmnt - discount;
+		System.out.println("total amnt" + totalAmnt + " " + cgstmnt + " " + sgst + " " + tds + " " + roundoff + "igst"
+				+ igstamnt + "" + utgstamnt);
+		float verifyamnt = (totalAmnt + cgstmnt + sgst + utgstamnt + igstamnt) - tds;
+		System.out.println("verify amnt" + verifyamnt);
+		verifyamnt = verifyamnt + 0.01f;
 		System.out.println("verify amnt" + verifyamnt);
 		int v = (int) (verifyamnt + roundoff);
-		System.out.println("v is" + v);
+		System.out.println("verify amount is" + v);
 		Assert.assertEquals(v, netToatl);
 		return this;
 	}
 
-	
-	
+	public TaxInvoicePage verifyNetTotalDecimalValue() {
+		GenericUtils.delay(2);
+		int netamnt = Integer.parseInt(driver.findElement(By.xpath("(//span[@class='smallest-number'])[2]")).getText());
+		System.out.println("Net amount after round off:" + netamnt);
+		if (netamnt > 0) {
+			Assert.assertTrue(true);
+		} else {
+			Assert.assertFalse(true, "Decimal value not populated");
+		}
+		return this;
+	}
+
+	public TaxInvoicePage setYesInSequenceOverride() {
+		driver.findElement(By.xpath("//button[@class='btn btn-modal-blue font-12 uppercase' and text()='Yes']"))
+				.click();
+		return this;
+	}
+
+	public TaxInvoicePage verifyDueDate(String paymentterms) {
+		String[] a = paymentterms.split(" ");
+		String data=a[1];
+		System.out.println(data);
+		int terms = Integer.valueOf(data);
+		System.err.println("terms"+terms);
+		Calendar c = Calendar.getInstance();
+		c.add(Calendar.DATE, terms);
+		Date dueDate = c.getTime();
+		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		String dueDate1 = format.format(dueDate);
+		System.out.println("due date after cal" + dueDate1);
+		String acDueDate = getDueDateTextField();
+		System.out.println("due date in ui" + acDueDate);
+		if (dueDate1.equals(acDueDate)) {
+			Assert.assertTrue(true);
+		} else {
+			Assert.assertFalse(true, "due date not matching");
+		}
+
+		return this;
+
+	}
 
 }

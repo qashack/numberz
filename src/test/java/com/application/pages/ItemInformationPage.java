@@ -156,7 +156,7 @@ public class ItemInformationPage extends TaxInvoicePage {
 			Assert.assertTrue(true,"Tax is auto poupulated");
 		}else 
 		{
-			Assert.assertFalse(false,"Tax rate is not autopoulated");
+			Assert.assertFalse(true,"Tax rate is not autopoulated");
 		}
 		
 		

@@ -49,7 +49,7 @@ public class BaseClass {
 	DesiredCapabilities cap;
 	String configFilePath = "config/config.xlsx";
 	String filePath_invoice= "data/Invoice_data.xlsx";
-	String filePath_Expence="data/Expence_data.xlsx";
+	String filePath_Expence="data/Expense_data.xlsx";
 	
 	@Parameters({"Machine"})
 	@BeforeSuite
@@ -79,7 +79,7 @@ public class BaseClass {
 	
 	@Parameters({"Category","Machine","Browser"})
 	@BeforeClass
-	public void classPreconditions(@Optional() String category, @Optional("localhost") String machine, @Optional("Chrome") String browser){
+	public void classPreconditions(@Optional("smoke") String category, @Optional("localhost") String machine, @Optional("Chrome") String browser){
 		String testDescription="";
 		testDescription = this.getClass().getDeclaredMethods()[0].getAnnotation(Test.class).description();
 		ExtentTestManager.startTest(this.getClass().getSimpleName()+" ["+testDescription+"]");
@@ -153,7 +153,7 @@ public class BaseClass {
 	
 	@AfterClass
 	public void classPostconditions(){
-		//driver.quit();
+		driver.quit();
 		ExtentTestManager.getTest().log(LogStatus.INFO, "Browser closed");
 		ExtentManager.getReporter().endTest(ExtentTestManager.getTest());		
 		ExtentManager.getReporter().flush();

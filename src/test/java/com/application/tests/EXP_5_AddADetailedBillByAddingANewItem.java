@@ -26,15 +26,15 @@ public class EXP_5_AddADetailedBillByAddingANewItem extends BaseClass {
 		String paymentTerms = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 3);
 		String paymentMethod = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 4);
 		String newItemNameArray = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 5);
-		String newItemName = expensesBill.getRandomStringfromArray(newItemNameArray, GenericUtils.randomNumber("8"));
+		String newItemName = expensesBill.getRandomStringfromArray(newItemNameArray, GenericUtils.randomNumber("7"));
 		String dscription = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 6);
 		String sellingPriceArray = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 7);
-		String sellingPrice = expensesBill.getRandomStringfromArray(sellingPriceArray, GenericUtils.randomNumber("8"));
+		String sellingPrice = expensesBill.getRandomStringfromArray(sellingPriceArray, GenericUtils.randomNumber("7"));
 		String purchasePriceArray = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 8);
-		String purchasePrice = expensesBill.getRandomStringfromArray(purchasePriceArray,GenericUtils.randomNumber("8"));
-		String unitOfMeasure = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 9);
-		String taxCredit = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 10);
-		String purchaseType = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 11);
+		String purchasePrice = expensesBill.getRandomStringfromArray(purchasePriceArray,
+				GenericUtils.randomNumber("8"));
+		String purchaseTypeArray = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 11);
+		String purchaseType = expensesBill.getRandomStringfromArray(purchaseTypeArray, GenericUtils.randomNumber("3"));
 
 		new Login().loginApp(driver);
 		/*
@@ -49,10 +49,10 @@ public class EXP_5_AddADetailedBillByAddingANewItem extends BaseClass {
 
 		expenses.clickAddDetailedBillButton();
 		GenericUtils.delay(3);
-		
+
 		bill.dropdownSelectOrAddVendorClick();
 		GenericUtils.delay(2);
-		//bill.clickAddNewVendor();
+		// bill.clickAddNewVendor();
 
 		/*
 		 * click on the select or Add vendor
@@ -83,7 +83,6 @@ public class EXP_5_AddADetailedBillByAddingANewItem extends BaseClass {
 		GenericUtils.sendEnterKeys(driver);
 		GenericUtils.delay(5);
 
-		
 		item.addNewItemTextclick();
 		GenericUtils.delay(3);
 
@@ -109,11 +108,13 @@ public class EXP_5_AddADetailedBillByAddingANewItem extends BaseClass {
 		item.unitOfMeasureDropdownClick();
 		GenericUtils.delay(3);
 
-		item.checkOptionExistsOrNot(4);
+		int unitOFMesure = GenericUtils.randomNumber("46");
+
+		item.checkOptionExistsOrNot(1);
 		GenericUtils.delay(3);
 
-		item.unitOfMesureSelectClick();
-		GenericUtils.delay(3);
+		// item.unitOfMesureSelectClick();
+		// GenericUtils.delay(3);
 
 		item.newItemDesciptionTextAreaSettext(dscription);
 		GenericUtils.sendEnterKeys(driver);
@@ -125,10 +126,11 @@ public class EXP_5_AddADetailedBillByAddingANewItem extends BaseClass {
 
 		item.purchasePriceSetText(purchasePrice);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(5);
 
-		GenericUtils.delay(3);
-		item.taxCreditDropdownClick();
+		int taxCredi = GenericUtils.randomNumber("5");
+
+		item.taxCreditDropdownClick(taxCredi);
 		GenericUtils.delay(2);
 
 		item.taxCreditTypeClickclick();
@@ -141,6 +143,15 @@ public class EXP_5_AddADetailedBillByAddingANewItem extends BaseClass {
 		item.purchaseTypeTextSetText(purchaseType);
 		GenericUtils.sendEnterKeys(driver);
 		GenericUtils.delay(2);
+
+		item.saveButtonclick();
+		expensesBill.verifyMessage();
+		GenericUtils.delay(2);
+
+		expensesBill.clickSaveButton();
+		GenericUtils.delay(2);
+
+		expensesBill.verifyMessage();
 
 	}
 

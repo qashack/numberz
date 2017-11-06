@@ -13,7 +13,7 @@ public class Inv_6_AddInvoiceByselectingSez extends BaseClass{
 	String email = ExcelLibrary.getExcelData(filePath_invoice, sheetName, 1, 1);
 	String phone = ExcelLibrary.getExcelData(filePath_invoice, sheetName, 1, 2);
 
-	@Test(description = "Add invoice By adding new customer with sez enabled and verify igst")
+	@Test(description = "While adding a new customer if user selects the SEZ unit and SEZ developer, only IGST is used to in the price calculation")
 	public void addInvoiceNewCustomer() {
 		// Loging to an application
 		new Login().loginApp(driver);
@@ -62,7 +62,7 @@ public class Inv_6_AddInvoiceByselectingSez extends BaseClass{
 		 * 
 		 */
 		customerinfo.clickSend1Button();
-		GenericUtils.waitForLoadComplete(driver);
+		GenericUtils.delay(3);
 
 		customerinfo.verifyMessage();
 		
