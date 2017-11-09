@@ -34,6 +34,18 @@ public class VendorInformation {
 
 	@FindBy(xpath = "//div[2]/button")
 	private WebElement save;
+	
+	@FindBy(xpath = "(//div[@class='padding-20 modal-body']//span[@class='col-md-6 no-padding'])[1]/input")
+	private WebElement cityInput;
+	
+	@FindBy(xpath = "//div[@class='padding-20 modal-body']//span[@class='Select-arrow']")
+	private WebElement stateDropdown;
+	
+	@FindBy(xpath ="//div[@class='padding-20 modal-body']//div[@class='Select-input ']/input")
+	private WebElement stateInput;
+	
+	@FindBy(xpath = "(//button[@class='btn btn-modal-blue font-12 uppercase'])[1]")
+	private WebElement yesBtn;
 
 	public VendorInformation(WebDriver driver) {
 		this.driver = driver;
@@ -118,5 +130,21 @@ public class VendorInformation {
 	public VendorInformation clickSave1Button() {
 		save.click();
 		return this;
+	}
+	
+	public void cityInputSetText(String city) {
+		cityInput.sendKeys(city);
+	}
+	
+	public void stateDropdownClick() {
+		stateDropdown.click();
+	}
+	
+	public void stateInputSetText(String state) {
+		stateInput.sendKeys(state);		
+	}
+	
+	public void yesBtnClick() {
+		yesBtn.click();
 	}
 }

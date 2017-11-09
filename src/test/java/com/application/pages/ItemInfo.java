@@ -34,6 +34,7 @@ public class ItemInfo {
 
 	@FindBy(xpath = "//div[2]/button")
 	private WebElement searchHsnCodeBtn;
+	
 
 	@FindBy(xpath = "//div[@class='modal-body']//button[@class='btn font-10 padding-20 btn-green-border uppercase']")
 	private WebElement searchHsnCodeBtnPurchaseOrder;
@@ -96,7 +97,22 @@ public class ItemInfo {
 
 	@FindBy(xpath = "(//div[@class='modal-body']//button)[1]")
 	private WebElement saveButtonPurchaseOrder;
-
+	
+	@FindBy(xpath = "//div[@class='modal-body']//span[@class='gb-label aligned-label help-text']")
+	private WebElement findHsnBtnRecurringBill;
+	
+	@FindBy(xpath = "//div[2]/div/div/div[2]/button")
+	private WebElement searchHsnRecurringBill;
+	
+	@FindBy(xpath = "(//div[@class='modal-body']//input)[3]")
+	private WebElement sellingPriceRecurringBill;
+	
+	@FindBy(xpath = "(//div[@class='modal-body']//input)[4]")
+	private WebElement purchasePriceRecurringBill;
+	
+	@FindBy(xpath = "(//div[@class='modal-body']//button)[1]")
+	private WebElement saveBtnRecurringBill;
+	
 	public void addNewItemSelectClick() {
 		addNewItemSelect.click();
 		// JavascriptLibrary.javascriptClickElement(driver, addNewItemSelect);
@@ -194,5 +210,26 @@ public class ItemInfo {
 	public void saveButtonPurchaseOrderClick() {
 		saveButtonPurchaseOrder.click();
 	}
+	
+	public void findHsnBtnRecurringBillClick() {
+		findHsnBtnRecurringBill.click();
+	}
 
+	public void searchHsnRecurringBillClick() {
+		searchHsnRecurringBill.click();
+	}
+	
+	public void sellingPriceRecurringBillsetText(String selling) {
+		sellingPriceRecurringBill.clear();
+		sellingPriceRecurringBill.sendKeys(selling);
+	}
+	
+	public void purchasePriceRecurringBillsetText(String selling) {
+		purchasePriceRecurringBill.clear();
+		purchasePriceRecurringBill.sendKeys(selling);
+	}
+	
+	public void saveBtnRecurringBillClick() {
+		saveBtnRecurringBill.click();
+	}
 }

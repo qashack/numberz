@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Random;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -19,6 +20,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+
 
 // TODO: Auto-generated Javadoc
 /**
@@ -431,6 +434,13 @@ public class GenericUtils {
 		int i=new Random().nextInt(100);
 		return Integer.toString(i);
 	}
-	
+	public static void waitForLoadComplete(WebDriver driver){
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//strong[text()='Please wait...']")));
+		
+		driver.manage().timeouts().implicitlyWait(Long.parseLong(GenericUtils.getConfigProperties("config/config.properties", "IMPLICIT_WAIT")),TimeUnit.SECONDS);		
+	}
 	
 }

@@ -1,10 +1,13 @@
 package com.application.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
+
+import com.application.libraries.GenericUtils;
 
 public class EmailPage extends TaxInvoicePage {
 	WebDriver driver;
@@ -81,5 +84,57 @@ public class EmailPage extends TaxInvoicePage {
 		
 		return this;
 	}
+	public EmailPage verifyEmailBody(String data)
+	{
+		driver.switchTo().frame("react-tinymce-0_ifr");
+		String subject=emailBody.getText();
+		if(subject.contains(data))
+		{
+			Assert.assertFalse(true,"Subject not populated properly");
+		}else
+		{
+			Assert.assertTrue(true);
+		}
+		
+		
+		return this;
+	}
+	public EmailPage clickOnGetFinance()
+	{
+		emailGetFinance.click();
+		return this;
+		
+	}
+	public EmailPage setEmailTo(String email_to)
+	{
+		emailtoField1.clear();
+		emailtoField1.sendKeys(email_to);
+		return this;
+	}
+	public EmailPage clickOnPayNow()
+	{
+		emailPayNow.click();
+		return this;
+		
+	}
+	public EmailPage verifyPaynowOptions()
+	{
+		GenericUtils.delay(2);
+		int op1=driver.findElements(By.id("rzp-key-number")).size();
+		int op2=driver.findElements(By.id("rzp-secret-number")).size();
+		int op0=driver.findElements(By.xpath("//label[text()='Select Payment Method']")).size();
+		if(op1==0 ||op0==0||op2==0)
+		{
+			Assert.fail("Pay now  all options are not displayed");
+		}else
+		{
+			Assert.assertTrue(true);
+		}
+		
+		return this;
+	}
+	
+	
+	
 	
 }

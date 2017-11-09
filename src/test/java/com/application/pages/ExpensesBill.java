@@ -47,10 +47,6 @@ public class ExpensesBill {
 		Assert.assertEquals(actual, expected);
 	}
 
-	// public void checkOptionIsThere(WebDriver driver ){
-	// driver.findElements()
-	// }
-
 	@FindBy(xpath = ".//*[@id='LineItemTable']/tbody/tr/td[2]/div/div/div[1]")
 	private WebElement ItemNameTextField;
 
@@ -182,6 +178,9 @@ public class ExpensesBill {
 
 	@FindBy(xpath = "//div[contains(@class,'select-customer')]//span[@class='Select-arrow']")
 	private WebElement dropdownSelectOrAddVendor;
+	
+	@FindBy(xpath = "//div[@id='expensesContainer']//*[contains(text(),'Add New Vendor')]")
+	private WebElement addNewVendorquickBill;
 
 	public ExpensesBill(WebDriver driver) {
 		this.driver = driver;
@@ -1007,6 +1006,10 @@ public class ExpensesBill {
 		Random rand = new Random();
 		String str = Integer.toString(rand.nextInt(10000));
 		return str;
+	}
+	 
+	public void addNewVendorquickBill() {
+		addNewVendorquickBill.click();
 	}
 
 }
