@@ -17,55 +17,42 @@ public class LoginPage {
     private int timeout = 15;
 
     @FindBy(id = "Login-email")
-    @CacheLookup
     private WebElement usernames;
 
     @FindBy(id = "Login-password")
-    @CacheLookup
     private WebElement password;
 
     @FindBy(id = "olark-form-input-email")
-    @CacheLookup
     private WebElement clickHereAndTypeYourEmail3;
 
     @FindBy(id = "olark-form-input-fname")
-    @CacheLookup
     private WebElement clickHereAndTypeYourName;
 
     @FindBy(css = "button.olark-launch-button.olark-chat-tab.olark-size-md")
-    @CacheLookup
     private WebElement envelopeIconsmallPictureOfAnEnvelope;
 
     @FindBy(id = "Login-forgot-password")
-    @CacheLookup
     private WebElement forgotPassword;
 
     @FindBy(css = "#app div:nth-of-type(1) div:nth-of-type(2) div.row.col-md-8.col-md-offset-2.loginBox div:nth-of-type(2) div:nth-of-type(3) div.text-center a.link.font-10")
-    @CacheLookup
     private WebElement learnMore;
 
     private final String pageLoadedText = "";
-
     private final String pageUrl = "/app?redirectTo=/app/home";
 
     @FindBy(css = "#olark-container div:nth-of-type(3) a")
-    @CacheLookup
     private WebElement poweredByOlark;
 
     @FindBy(id = "olark-form-input-body")
-    @CacheLookup
     private WebElement requiredAsterisksignifiesThatThisFieldCan;
 
     @FindBy(css = "button.olark-form-send-button")
-    @CacheLookup
     private WebElement send;
 
     @FindBy(id = "Login-button")
-    @CacheLookup
     private WebElement signIn;
 
     @FindBy(id = "Login-signup")
-    @CacheLookup
     private WebElement signUpHere;
 
     public LoginPage() {

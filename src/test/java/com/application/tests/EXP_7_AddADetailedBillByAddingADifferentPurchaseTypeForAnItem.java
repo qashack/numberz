@@ -12,7 +12,7 @@ public class EXP_7_AddADetailedBillByAddingADifferentPurchaseTypeForAnItem exten
 
 	String expensesSheet = "EXP_7";
 
-	@Test(description = "")
+	@Test(description = "Add a Detailed bill by adding a different Purchase type for an item")
 	public void addADetailedBillByAddingADifferentPurchaseTypeForAnItem() {
 		HomePage homePage = new HomePage(driver);
 		Expenses expenses = new Expenses(driver);
@@ -33,50 +33,49 @@ public class EXP_7_AddADetailedBillByAddingADifferentPurchaseTypeForAnItem exten
 		/*
 		 * click on the expenses link
 		 */
-
+		GenericUtils.waitForLoadComplete(driver);
 		homePage.clickGotoExpenseListLink();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 		/*
 		 * click on the Add detailed bill button
 		 */
-
+		GenericUtils.waitForLoadComplete(driver);
 		expenses.clickAddDetailedBillButton();
-		GenericUtils.delay(2);
 
-		GenericUtils.delay(2);
+		GenericUtils.waitForLoadComplete(driver);
 		expensesBill.setBillFromTextField(vendor);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		expensesBill.setBillTextField(billNumber);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		expensesBill.setExpenseTypeTextField(expenseType);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		expensesBill.setPaymentTermsDropDownListField(paymentTerms);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		expensesBill.setPaymentMethodDropDownListField(paymentMethod);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		expensesBill.setSelectOrAddAnItemselect1TextareaField(itemName);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		expensesBill.clickorSelectPurchaseType(purchaseType);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		expensesBill.clickSaveButton();
 		GenericUtils.delay(2);
 
 		expensesBill.verifyMessage();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 	}
 

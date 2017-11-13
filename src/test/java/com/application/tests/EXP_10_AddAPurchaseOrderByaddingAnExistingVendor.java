@@ -8,12 +8,11 @@ import com.application.pages.Expenses;
 import com.application.pages.ExpensesBill;
 import com.application.pages.HomePage;
 import com.application.pages.PurchaseOrder;
-import com.application.pages.PurchaseOrderNewVendor;
 
 public class EXP_10_AddAPurchaseOrderByaddingAnExistingVendor extends BaseClass {
 	String expensesSheet = "EXP_10";
 
-	@Test(description = "")
+	@Test(description = "Add a Purchase Order by adding an Existing vendor")
 	public void addAPurchaseOrderByaddingAnExistingVendor() {
 		HomePage homePage = new HomePage(driver);
 		Expenses expenses = new Expenses(driver);
@@ -34,57 +33,57 @@ public class EXP_10_AddAPurchaseOrderByaddingAnExistingVendor extends BaseClass 
 		/*
 		 * click on the expenses link
 		 */
-
+		GenericUtils.waitForLoadComplete(driver);
 		homePage.clickGotoExpenseListLink();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		expenses.clickPurchaseOrdersLink();
-		GenericUtils.delay(2);
 
+		GenericUtils.waitForLoadComplete(driver);
 		purchaseOrder.addPurchaseOrderClick();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		purchaseOrder.selectOrAddVendorClick();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		purchaseOrder.selectOrAddVendorClick();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		purchaseOrder.selectOrAddVendorClickSetText(vendorName);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		purchaseOrder.poHashSetText(poHash);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		purchaseOrder.setPaymentTermsDropDownListField(paymentTerms);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		purchaseOrder.expenseTypeDropdownBtnClick();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		purchaseOrder.expenseTypeTextSetText(expenseType);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		purchaseOrder.refHashSetText(refHash);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		purchaseOrder.selectOrAddItemClick();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		purchaseOrder.selectOrAddItemInputSetText(itemName);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		purchaseOrder.savePurchaseOrderClick();
 		GenericUtils.delay(2);
 
-		expensesBill.verifyMessageAndQuit();
-		GenericUtils.delay(2);
+		expensesBill.verifyMessage();
+		GenericUtils.delay(1);
 
 	}
 

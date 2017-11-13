@@ -16,6 +16,7 @@ import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -931,7 +932,12 @@ public class TaxInvoicePage {
 	}
 
 	public void verifyMessage() {
-		String message = driver.findElement(By.className("toast-message")).getText();
+		driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+		
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.className("toast-message")));
+		 WebElement element=driver.findElement(By.className("toast-message"));
+		String message = element.getText();
 		System.out.println(message);
 
 		if (message.contains("created") || message.contains("sent to")) {
@@ -940,6 +946,7 @@ public class TaxInvoicePage {
 			Assert.fail("Invoice creation failed");
 
 		}
+		driver.manage().timeouts().implicitlyWait(Long.parseLong(GenericUtils.getConfigProperties("config/config.properties", "IMPLICIT_WAIT")),TimeUnit.SECONDS);
 	}
 
 	/*

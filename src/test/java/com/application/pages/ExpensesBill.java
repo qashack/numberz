@@ -1,21 +1,15 @@
 package com.application.pages;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-
 import com.application.libraries.JavascriptLibrary;
-import com.application.tests.EXP_1_AddADetailedBillByAddingANewVendor;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -178,7 +172,7 @@ public class ExpensesBill {
 
 	@FindBy(xpath = "//div[contains(@class,'select-customer')]//span[@class='Select-arrow']")
 	private WebElement dropdownSelectOrAddVendor;
-	
+
 	@FindBy(xpath = "//div[@id='expensesContainer']//*[contains(text(),'Add New Vendor')]")
 	private WebElement addNewVendorquickBill;
 
@@ -971,28 +965,10 @@ public class ExpensesBill {
 		String message = driver.findElement(By.className("toast-message")).getText();
 		System.out.println(message);
 
-		if (message.contains("Success!")) {
+		if (message.contains("Success!")||message.contains("created!") || message.contains("New") ) {
 			Assert.assertTrue(true);
 		} else {
-			Assert.assertFalse(false, "Failed to create a bill");
-
-		}
-	}
-
-	public void getMessage() {
-		String message = driver.findElement(By.className("toast-message")).getText();
-		System.out.println(message);
-	}
-
-	public void verifyMessageAndQuit() {
-		String message = driver.findElement(By.className("toast-message")).getText();
-		System.out.println(message);
-
-		if (message.contains("Success!")) {
-			Assert.assertTrue(true);
-		} else {
-			Assert.assertFalse(false, "Failed to create a Bill");
-
+			Assert.fail(message);
 		}
 	}
 
@@ -1007,7 +983,7 @@ public class ExpensesBill {
 		String str = Integer.toString(rand.nextInt(10000));
 		return str;
 	}
-	 
+
 	public void addNewVendorquickBill() {
 		addNewVendorquickBill.click();
 	}

@@ -3,6 +3,7 @@ package com.application.tests;
 import org.openqa.selenium.WebDriver;
 
 import com.application.libraries.ExcelLibrary;
+import com.application.libraries.GenericUtils;
 import com.application.pages.LoginPage;
 
 public class Login extends BaseClass{
@@ -15,6 +16,7 @@ public class Login extends BaseClass{
 	{
 		LoginPage login=new LoginPage(driver);
 		login.FullLogin(username, passsword);
+		GenericUtils.waitForLoadComplete(driver);
 	}
 	
 	

@@ -1,13 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Automation Suite" verbose="3">
-  <test name="Smoke">
-    <parameter name="Category" value="Smoke"/>
-    <parameter name="Machine" value="localhost"/>
-    <parameter name="Browser" value="Chrome"/>
-    <classes>
-    	<class name="com.application.tests.InvoiceTest"/>
-        <class name="com.application.tests.InvoiceDiscountTest"/>
-    </classes>
-  </test> <!-- Smoke -->
-</suite> <!-- Automation Suite -->
+
+-<suite verbose="3" name="Suite">
+
+<!-- Suite -->
+
+
+-<test name="Test">
+
+
+-<classes>
+
+<class name="com.application.tests.EXP_1_AddADetailedBillByAddingANewVendor"/>
+
+<class name="com.application.tests.EXP_2_AddADetailedBillByAddingAnExistingVendor"/>
+
+<class name="com.application.tests.EXP_3_AddADetailedBillByAddingANewExpenseType"/>
+
+<class name="com.application.tests.EXP_4_AddADetailedBillByAdingAExistingExpenseType"/>
+
+<class name="com.application.tests.EXP_5_AddADetailedBillByAddingANewItem"/>
+
+<class name="com.application.tests.EXP_6_AddAndVerifyADetailedBillByAddingAnExistingItemVerifyThatTheAmountTaxRateAsSelectedItemModal"/>
+
+<class name="com.application.tests.EXP_7_AddADetailedBillByAddingADifferentPurchaseTypeForAnItem"/>
+
+<class name="com.application.tests.EXP_8_AddADetailedBillByAddingADifferentTaxCreditForAnItem"/>
+
+<class name="com.application.tests.EXP_9_AddAPurchaseOrderByAddingANewVendor"/>
+
+<class name="com.application.tests.EXP_10_AddAPurchaseOrderByaddingAnExistingVendor"/>
+
+<class name="com.application.tests.EXP_11_AddAPurchaseOrderByAddingANewItem"/>
+
+<class name="com.application.tests.EXP_12_AddAPurchaseOrderByAddingAnExistingItemVerifyThatTheAmountTaxRateAsSelectedItemModal"/>
+
+<class name="com.application.tests.EXP_13_SendThePurchaseOrderEmailAfterAddingAPurchaseOrder"/>
+
+<class name="com.application.tests.EXP_14_AddARecurringBillByAddingANewVendor"/>
+
+<class name="com.application.tests.EXP_15_AddARecurringBillByAddingAnExistingVendor"/>
+
+<class name="com.application.tests.EXP_16_AddARecurringBillByAddingANewItem"/>
+
+<class name="com.application.tests.EXP_17_AddARecurringBillByAddingAnExistingItem"/>
+
+<class name="com.application.tests.EXP_18_AddARecurringBillForDifferentFrequencies"/>
+
+<class name="com.application.tests.EXP_19_AddAQuickBillByAddingANewVendor"/>
+
+<class name="com.application.tests.Init"/>
+
+<class name="com.application.tests.Inv_1_AddInvoiceByAddingNewCustomer"/>
+
+<class name="com.application.tests.Inv_2_AddInvoiceToExistingCustomer"/>
+
+<class name="com.application.tests.Inv_3_AddInvoicewithTds"/>
+
+<class name="com.application.tests.Inv_4_AddInvoiceVerifyCgst"/>
+
+<class name="com.application.tests.Inv_5_AddInvoiceVerifyIgst"/>
+
+<class name="com.application.tests.Inv_6_AddInvoiceByselectingSez"/>
+
+<class name="com.application.tests.Inv_7_AddInvoiceForUnionTeritoryNewCustomerVerifyUgst"/>
+
+<class name="com.application.tests.Inv_8_AddInvoiceByAddingOverseesVerifyIgst"/>
+
+<class name="com.application.tests.Inv_9_AddInvoiceByAddingNewItem"/>
+
+<class name="com.application.tests.Inv_10_AddInvoiceForExistingItem"/>
+
+<class name="com.application.tests.Inv_11_AddItemWithHsnVerifyTaxRate"/>
+
+<class name="com.application.tests.Inv_12_AddInvoiceByAddingDiscountAndVerifyit"/>
+
+<class name="com.application.tests.Inv_13_AddInvoiceByselectingItemWithRoundoff"/>
+
+<class name="com.application.tests.Inv_14_AddInvoiceByOveridingSequence"/>
+
+<class name="com.application.tests.Inv_15_AddInvoiceByAttachingAFile"/>
+
+<class name="com.application.tests.Inv_16_AddInvoiceByAddingPaymentTerms"/>
+
+<class name="com.application.tests.Inv_17_AddInvoiceByadiingnewCustomerAndItemHitsendButton"/>
+
+<class name="com.application.tests.Inv_18_AddInvoiceAndCheckEmailtoandcc"/>
+
+<class name="com.application.tests.Inv_19_AddInvoiceAndVerifyEmailSubject"/>
+
+
+</classes>
+
+</test>
+
+<!-- Test -->
+
+
+</suite>

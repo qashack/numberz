@@ -7,21 +7,19 @@ import com.application.libraries.GenericUtils;
 import com.application.pages.Expenses;
 import com.application.pages.ExpensesBill;
 import com.application.pages.HomePage;
-import com.application.pages.ItemInfo;
 import com.application.pages.PurchaseOrder;
 
 public class EXP_13_SendThePurchaseOrderEmailAfterAddingAPurchaseOrder extends BaseClass {
 
 	String expensesSheet = "EXP_13";
 
-	@Test(description = "")
+	@Test(description = "Send the Purchase Order Email after adding a Purchase Order")
 	public void SendThePurchaseOrderEmailAfterAddingAPurchaseOrder() {
 
 		HomePage homePage = new HomePage(driver);
 		Expenses expenses = new Expenses(driver);
 		ExpensesBill expensesBill = new ExpensesBill(driver);
 		PurchaseOrder purchaseOrder = new PurchaseOrder(driver);
-		ItemInfo item = new ItemInfo(driver);
 
 		String vendorName = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 0);
 		String poHash = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 1);
@@ -39,62 +37,62 @@ public class EXP_13_SendThePurchaseOrderEmailAfterAddingAPurchaseOrder extends B
 		 */
 		GenericUtils.waitForLoadComplete(driver);
 		homePage.clickGotoExpenseListLink();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		GenericUtils.waitForLoadComplete(driver);
 		expenses.clickPurchaseOrdersLink();
 
 		GenericUtils.waitForLoadComplete(driver);
 		purchaseOrder.addPurchaseOrderClick();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		purchaseOrder.selectOrAddVendorClick();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		purchaseOrder.selectOrAddVendorClick();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		purchaseOrder.selectOrAddVendorClickSetText(vendorName);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		purchaseOrder.poHashSetText(poHash);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		purchaseOrder.setPaymentTermsDropDownListField(paymentTerms);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		purchaseOrder.expenseTypeDropdownBtnClick();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		purchaseOrder.expenseTypeTextSetText(expenseType);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		purchaseOrder.refHashSetText(refHash);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		purchaseOrder.selectOrAddItemClick();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		purchaseOrder.selectOrAddItemInputSetText(itemName);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		purchaseOrder.sendPurchaseButtonClick();
 		GenericUtils.delay(2);
 
-		expensesBill.verifyMessageAndQuit();
+		expensesBill.verifyMessage();
 		GenericUtils.delay(2);
 
 		purchaseOrder.sendEmailButtonClick();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		expensesBill.verifyMessage();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 	}
 

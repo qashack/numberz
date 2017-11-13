@@ -15,7 +15,7 @@ public class Inv_7_AddInvoiceForUnionTeritoryNewCustomerVerifyUgst extends BaseC
 	String gstNumberNew = ExcelLibrary.getExcelData(filePath_invoice, sheetName, 1, 15);
 	String gstNumberOld = ExcelLibrary.getExcelData(filePath_invoice, sheetName, 1, 18);
 
-	@Test(description = "Add an Invoice by adding/selecting a customer who is in a union territory. Verify the UTGST section in the Invoice")
+	@Test(description="Add an Invoice by adding/selecting a customer who is in a union territory.Verify the UTGST section in the Invoice")
 	public void addInvoiceNewCustomer() {
 		// Loging to an application
 		new Login().loginApp(driver);
@@ -31,7 +31,7 @@ public class Inv_7_AddInvoiceForUnionTeritoryNewCustomerVerifyUgst extends BaseC
 		/*
 		 * Click on add invoice button
 		 */
-		GenericUtils.waitForLoadComplete(driver);
+		
 		home.clickOnAddInvoiceInInvoice();
 		GenericUtils.waitForLoadComplete(driver);
 		/*
@@ -73,7 +73,7 @@ public class Inv_7_AddInvoiceForUnionTeritoryNewCustomerVerifyUgst extends BaseC
 		 */
 		customerinfo.clickSend1Button();
 
-		GenericUtils.delay(3);
+		GenericUtils.delay(2);
 		customerinfo.verifyMessage();
 		GenericUtils.waitForLoadComplete(driver);
 		customerinfo.clickEmailCanceButton();
@@ -92,7 +92,7 @@ public class Inv_7_AddInvoiceForUnionTeritoryNewCustomerVerifyUgst extends BaseC
 		GenericUtils.waitForLoadComplete(driver);
 		setting.fillGST(data);
 		setting.clickOnSaveButton();
-		
+		GenericUtils.waitForLoadComplete(driver);
 
 	}
 

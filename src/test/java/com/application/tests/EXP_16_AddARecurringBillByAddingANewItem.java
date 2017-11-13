@@ -14,13 +14,12 @@ public class EXP_16_AddARecurringBillByAddingANewItem extends BaseClass {
 
 	String expensesSheet = "EXP_16";
 
-	@Test(description = "")
+	@Test(description = "Add a Recurring Bill by adding a New item")
 	public void addARecurringBillByAddingANewItem() {
 
 		HomePage homePage = new HomePage(driver);
 		PurchaseOrder purchaseOrder = new PurchaseOrder(driver);
 		Recurring recurring = new Recurring(driver);
-		ExpensesBill bill = new ExpensesBill(driver);
 		ExpensesBill expensesBill = new ExpensesBill(driver);
 		ItemInfo item = new ItemInfo(driver);
 
@@ -54,107 +53,107 @@ public class EXP_16_AddARecurringBillByAddingANewItem extends BaseClass {
 		 */
 		GenericUtils.waitForLoadComplete(driver);
 		homePage.clickGotoExpenseListLink();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		GenericUtils.waitForLoadComplete(driver);
 		purchaseOrder.recurringBtnClick();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		GenericUtils.waitForLoadComplete(driver);
 		recurring.addRecurringBillBtnClick();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		recurring.selectOrAddVendorClick();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		recurring.selectOrAddVendorInputSetText(vendorName);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		recurring.frequencyDropDownClick();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		recurring.frequencyInput(frequency);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		recurring.endDateClick();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		recurring.endDateSetText(endDate);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		recurring.expenseTypeDropDownClick();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		recurring.expenseTypeInputSetText(expenseType);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		recurring.paymentTermsDropDownClick();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		recurring.paymentTermsInputSelect(paymentterm);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		recurring.itemNameclick();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		item.addNewItemSelectClick();
-		GenericUtils.delay(3);
+		GenericUtils.delay(1);
 
 		item.setTextTonewItemName(newItemName);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(3);
+		GenericUtils.delay(1);
 
 		item.findHsnBtnRecurringBillClick();
-		GenericUtils.delay(3);
+		GenericUtils.delay(1);
 
 		item.searchHsnRecurringBillClick();
-		GenericUtils.delay(3);
+		GenericUtils.delay(1);
 
 		item.radioBtnHsnCodeSelectClick();
-		GenericUtils.delay(3);
+		GenericUtils.delay(1);
 
 		item.unitOfMeasureDropdownClick();
-		GenericUtils.delay(3);
+		GenericUtils.delay(1);
 
 		int unitOFMesure = GenericUtils.randomNumber("46");
 
 		item.checkOptionExistsOrNot(1);
-		GenericUtils.delay(3);
+		GenericUtils.delay(1);
 
 		// item.unitOfMesureSelectClick();
 		// GenericUtils.delay(3);
 
 		item.newItemDesciptionTextAreaSettext(dscription);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		item.sellingPriceRecurringBillsetText(sellingPrice);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		item.purchasePriceRecurringBillsetText(purchasePrice);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(5);
+		GenericUtils.delay(1);
 
 		int taxCredi = GenericUtils.randomNumber("5");
 
 		item.taxCreditDropdownClick(taxCredi);
-		GenericUtils.delay(2);
-		//
+		GenericUtils.delay(1);
+
 		// item.taxCreditTypeClickclick();
 		// GenericUtils.sendEnterKeys(driver);
-		// GenericUtils.delay(2);
+		// GenericUtils.delay(1);
 
 		item.purchaseTypedropdownBtnclick();
-		GenericUtils.delay(3);
+		GenericUtils.delay(1);
 
 		item.purchaseTypeTextSetText(purchaseType);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		item.saveBtnRecurringBillClick();
 		GenericUtils.delay(2);
@@ -166,7 +165,7 @@ public class EXP_16_AddARecurringBillByAddingANewItem extends BaseClass {
 		GenericUtils.delay(2);
 
 		expensesBill.verifyMessage();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 	}
 }

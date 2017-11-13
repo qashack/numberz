@@ -8,8 +8,10 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Factory;
 
 import com.application.libraries.JavascriptLibrary;
+import com.sun.jna.platform.unix.X11;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -139,15 +141,45 @@ public class Expenses {
 
 	@FindBy(xpath = "(//div[@id='expensesContainer']//div[@class='Select-input '])[1]/input")
 	private WebElement expenseTypeInput;
-	
+
 	@FindBy(xpath = "(//div[@id='expensesContainer']//span[@class='Select-arrow'])[2]")
 	private WebElement paymentToVendorDropdown;
-	
+
 	@FindBy(xpath = "(//div[@id='expensesContainer']//div[@class='Select-input '])[2]/input")
 	private WebElement paymentToVendorInput;
-	
+
 	@FindBy(xpath = "(//div[@id='expensesContainer']//span[@class='Select-arrow'])[3]")
 	private WebElement paymentMethodDropDown;
+
+	@FindBy(xpath = "(//div[@id='expensesContainer']//span[@class='Select-arrow'])[4]")
+	private WebElement purchaseTypeDropDown;
+
+	@FindBy(xpath = "(//div[@id='expensesContainer']//div[@class='Select-input '])[4]/input")
+	private WebElement purchaseTypeInput;
+
+	@FindBy(xpath = "(//div[@id='expensesContainer']//span[@class='Select-arrow'])[5]")
+	private WebElement taxcreditDropDown;
+
+	@FindBy(xpath = "(//div[@id='expensesContainer']//div[@class='Select-input '])[5]/input")
+	private WebElement taxCreditInput;
+	
+	@FindBy(id = "quickbill-recurring-checkbox")
+	private WebElement recurringBillCheckBox;
+	
+	@FindBy(xpath = "//div[@class='modal-body']//span[@class='Select-arrow']")
+	private WebElement frequencyDropdown;
+	
+	@FindBy(xpath = "//div[@class='modal-body']//div[@class='Select-menu-outer']")
+	private WebElement frequncySelect;
+	
+	@FindBy(id = "recurrence-widget-frequency")
+	private WebElement frequencyInput;
+	
+	@FindBy(id ="recurrence-widget-end-date")
+	private WebElement endDateInput;
+	
+	@FindBy(xpath = "//button[@class='btn font-10 padding-20 btn-green-border uppercase left-margin-20 pull-right']")
+	private WebElement saveBtn;
 	
 
 	public Expenses(WebDriver driver) {
@@ -667,8 +699,50 @@ public class Expenses {
 	public void paymentToVendorInputSetText(String vendor) {
 		paymentToVendorInput.sendKeys(vendor);
 	}
-	
+
 	public void paymentMethodDropdownClick() {
 		paymentMethodDropDown.click();
 	}
+
+	public void purchaseTypeDropDown() {
+		purchaseTypeDropDown.click();
+	}
+
+	public void purchaseTypeInputSetText(String purchaseType) {
+		purchaseTypeInput.sendKeys(purchaseType);
+	}
+
+	public void taxCreditDropDown() {
+		taxcreditDropDown.click();
+	}
+
+	public void taxCreditInputSetText(String tax) {
+		taxCreditInput.sendKeys(tax);
+	}
+	
+	public void recurringBillCheckBoxClick() {
+		recurringBillCheckBox.click();
+	}
+	
+	public void frequencyDropdownClick() {
+		frequencyDropdown.click();
+	}
+	
+	public void frequncySelect(int index) {
+		Select select = new Select(frequncySelect);
+		select.selectByIndex(index);
+	}
+	
+	public void frequencySetText(String fre) {
+		frequencyInput.sendKeys(fre);
+	}
+	
+	public void endDateInputSetText(String endDate) {
+		endDateInput.sendKeys(endDate);
+	}
+	
+	public void saveBtnClick() {
+		saveBtn.click();
+	}
+	
 }

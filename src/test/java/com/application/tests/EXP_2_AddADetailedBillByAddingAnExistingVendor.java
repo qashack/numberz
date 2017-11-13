@@ -11,7 +11,7 @@ public class EXP_2_AddADetailedBillByAddingAnExistingVendor extends BaseClass {
 
 	String expensesSheet = "EXP_2";
 
-	@Test(description = "Add a Item and auto populate other data and generate bill")
+	@Test(description = "Add a Detailed bill by adding an Existing vendor")
 	public void addADetailedBillByAddingAnExistingVendor() {
 
 		HomePage homePage = new HomePage(driver);
@@ -19,12 +19,12 @@ public class EXP_2_AddADetailedBillByAddingAnExistingVendor extends BaseClass {
 		ExpensesBill expensesBill = new ExpensesBill(driver);
 
 		String vendor = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 0);
-		String billNumber = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 1);
-		String expenseType = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 2);
-		String refHash = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 3);
-		String paymentTerms = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 4);
-		String paymentMethod = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 5);
-		String itemName = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 6);
+		String billNumber = expensesBill.generateRandomBillNumber();
+		String expenseType = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 1);
+		String refHash = expensesBill.generateRandomBillNumber();
+		String paymentTerms = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 2);
+		String paymentMethod = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 3);
+		String itemName = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 4);
 
 		/**
 		 * Login to website using username and password
@@ -33,52 +33,53 @@ public class EXP_2_AddADetailedBillByAddingAnExistingVendor extends BaseClass {
 		/*
 		 * click on the expenses link
 		 */
-
+		GenericUtils.waitForLoadComplete(driver);
 		homePage.clickGotoExpenseListLink();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 		/*
 		 * click on the Add detailed bill button
 		 */
-
+		GenericUtils.waitForLoadComplete(driver);
 		expenses.clickAddDetailedBillButton();
-		GenericUtils.delay(2);
 
 		/*
 		 * click on the select or Add vendor
 		 */
-
-		GenericUtils.delay(2);
+		
+		GenericUtils.waitForLoadComplete(driver);
 		expensesBill.setBillFromTextField(vendor);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		expensesBill.setBillTextField(billNumber);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		expensesBill.setExpenseTypeTextField(expenseType);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		expensesBill.setRefTextField(refHash);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		expensesBill.setPaymentTermsDropDownListField(paymentTerms);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		expensesBill.setPaymentMethodDropDownListField(paymentMethod);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		expensesBill.setSelectOrAddAnItemselect1TextareaField(itemName);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		expensesBill.clickSaveButton();
-
+		GenericUtils.delay(2);
+		
 		expensesBill.verifyMessage();
+		GenericUtils.delay(1);
 
 	}
 

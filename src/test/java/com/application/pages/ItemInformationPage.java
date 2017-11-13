@@ -14,43 +14,33 @@ public class ItemInformationPage extends TaxInvoicePage {
 	WebDriver driver;
 
 	@FindBy(xpath = "//input[@placeholder='Item Name']")
-	@CacheLookup
 	private WebElement itemName;
 
 	@FindBy(xpath = "//input[@placeholder='Item HSN Code']")
-	@CacheLookup
 	private WebElement hsnCode;
 
 	@FindBy(xpath = "//textarea[@placeholder='Item Description']")
-	@CacheLookup
 	private WebElement itemDescription;
 
 	@FindBy(xpath = "(//input[@placeholder='INR'])[1]")
-	@CacheLookup
 	private WebElement sellingPrice;
 
 	@FindBy(xpath = "(//input[@placeholder='INR'])[2]")
-	@CacheLookup
 	private WebElement purchasePrice;
 
 	@FindBy(xpath = "(//div[@class='container-fluid'] //span[@class='Select-arrow'])[1]")
-	@CacheLookup
 	private WebElement unitmessureArrow;
 
 	@FindBy(xpath = "//div[@class='container-fluid'] //div[@class='Select-input ']/input")
-	@CacheLookup
 	private WebElement unitofMessure;
 
 	@FindBy(xpath = "(//div[@class='container-fluid'] //span[@class='Select-arrow'])[2]")
-	@CacheLookup
 	private WebElement taxarrow;
 	
 	@FindBy(xpath = "//div[@class='container-fluid']//div[@class='Select-value']/div")
-	@CacheLookup
 	private WebElement taxfield;
 
 	@FindBy(xpath = "//div[@class='container-fluid'] //button[text()='Save']")
-	@CacheLookup
 	private WebElement saveButton;
 
 	@FindBy(xpath = "//div[@class='container-fluid'] //button[text()='Cancel']")

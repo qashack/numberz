@@ -13,7 +13,7 @@ public class EXP_1_AddADetailedBillByAddingANewVendor extends BaseClass {
 
 	String expensesSheet = "EXP_1";
 
-	@Test(description = "Add new Vendor and and Item and generating a bill")
+	@Test(description = "Add a Detailed bill by adding a New vendor")
 	public void addADetailedBillByAddingAnExistingVendor() {
 
 		HomePage homePage = new HomePage(driver);
@@ -40,74 +40,79 @@ public class EXP_1_AddADetailedBillByAddingANewVendor extends BaseClass {
 		/*
 		 * click on the expenses link
 		 */
-
+		GenericUtils.waitForLoadComplete(driver);
 		homePage.clickGotoExpenseListLink();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 		/*
 		 * click on the Add detailed bill button
 		 */
-
+		GenericUtils.waitForLoadComplete(driver);
 		expenses.clickAddDetailedBillButton();
-		GenericUtils.delay(3);
 
+		GenericUtils.waitForLoadComplete(driver);
 		bill.dropdownSelectOrAddVendorClick();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		bill.clickAddNewVendor();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
-		vendorInfo.setVendorNameTextField(vendorName);
+		vendorInfo.setVendorNameTextField(vendorName + GenericUtils.simpleDate());
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		vendorInfo.setEmailEmailField(emailId);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		vendorInfo.setPhoneTextField(phone);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		vendorInfo.setAccountNumberTextField(accountNumber);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		vendorInfo.setIfscTextField(ifscCode);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		vendorInfo.setGstInTextField(gstInString);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		vendorInfo.clickSave1Button();
-		bill.getMessage();
+		GenericUtils.delay(2);
+
+		vendorInfo.gstinAlredyExistYesBtnClick();
+
+		bill.verifyMessage();
+		GenericUtils.delay(2);
 
 		bill.setBillTextField(billNumber);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		bill.setExpenseTypeTextField(expenseType);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		bill.setPaymentTermsDropDownListField(paymentTerms);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		bill.setPaymentMethodDropDownListField(paymentMethod);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		bill.setSelectOrAddAnItemselect1TextareaField(itemName);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		bill.clickSaveButton();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
-		bill.verifyMessageAndQuit();
-		GenericUtils.delay(2);
+		bill.verifyMessage();
+		GenericUtils.delay(1);
 
 	}
 

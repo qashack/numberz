@@ -16,7 +16,6 @@ public class SettingsPage  {
 	private WebElement gst;
 
 	@FindBy(xpath = "//button[text()='Save']")
-
 	private WebElement saveButton;
 
 	@FindBy(xpath = "//button[text()='Cancel']")

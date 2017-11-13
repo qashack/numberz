@@ -30,8 +30,6 @@ public class VendorInformation {
 	@FindBy(id = "gstin-number")
 	private WebElement gstin1;
 
-	// @FindBy(id = "bill-save-btn")
-
 	@FindBy(xpath = "//div[2]/button")
 	private WebElement save;
 	
@@ -46,6 +44,12 @@ public class VendorInformation {
 	
 	@FindBy(xpath = "(//button[@class='btn btn-modal-blue font-12 uppercase'])[1]")
 	private WebElement yesBtn;
+	
+	@FindBy(xpath = "//button[@class='btn font-10 padding-20 btn-green-border uppercase left-margin-20 pull-right margin-top-12']")
+	private WebElement saveVendorRecurringBill;
+	
+	@FindBy(xpath = "(//button[@class='btn btn-modal-blue font-12 uppercase'])[1]")
+	private WebElement gstinAlredyExistYesBtn;
 
 	public VendorInformation(WebDriver driver) {
 		this.driver = driver;
@@ -146,5 +150,13 @@ public class VendorInformation {
 	
 	public void yesBtnClick() {
 		yesBtn.click();
+	}
+	
+	public void saveVendorRecurringBillClick() {
+		saveVendorRecurringBill.click();
+	}
+	
+	public void gstinAlredyExistYesBtnClick() {
+		gstinAlredyExistYesBtn.click();
 	}
 }

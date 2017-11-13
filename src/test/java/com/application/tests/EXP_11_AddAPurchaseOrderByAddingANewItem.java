@@ -13,7 +13,7 @@ import com.application.pages.PurchaseOrder;
 public class EXP_11_AddAPurchaseOrderByAddingANewItem extends BaseClass {
 	String expensesSheet = "EXP_11";
 
-	@Test(description = "")
+	@Test(description = "Add a Purchase Order by adding a New item")
 	public void addAPurchaseOrderByAddingANewItem() {
 		HomePage homePage = new HomePage(driver);
 		Expenses expenses = new Expenses(driver);
@@ -27,7 +27,7 @@ public class EXP_11_AddAPurchaseOrderByAddingANewItem extends BaseClass {
 		String paymentTerms = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 3);
 		String refHash = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 4);
 		String newItemNameArray = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 5);
-		String newItemName = expensesBill.getRandomStringfromArray(newItemNameArray, GenericUtils.randomNumber("6"));
+		String newItemName = expensesBill.getRandomStringfromArray(newItemNameArray, GenericUtils.randomNumber("11"));
 		String sellingPriceArray = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 6);
 		String sellingPrice = expensesBill.getRandomStringfromArray(sellingPriceArray, GenericUtils.randomNumber("7"));
 		String purchasePriceArray = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 7);
@@ -43,70 +43,70 @@ public class EXP_11_AddAPurchaseOrderByAddingANewItem extends BaseClass {
 		 */
 		GenericUtils.waitForLoadComplete(driver);
 		homePage.clickGotoExpenseListLink();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		GenericUtils.waitForLoadComplete(driver);
 		expenses.clickPurchaseOrdersLink();
 
 		GenericUtils.waitForLoadComplete(driver);
 		purchaseOrder.addPurchaseOrderClick();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		purchaseOrder.selectOrAddVendorClick();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		purchaseOrder.selectOrAddVendorClick();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		purchaseOrder.selectOrAddVendorClickSetText(vendorName);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		purchaseOrder.poHashSetText(poHash);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		purchaseOrder.setPaymentTermsDropDownListField(paymentTerms);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		purchaseOrder.expenseTypeDropdownBtnClick();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		purchaseOrder.expenseTypeTextSetText(expenseType);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		purchaseOrder.refHashSetText(refHash);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		purchaseOrder.selectOrAddItemClick();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		purchaseOrder.addNewItemClick();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		item.setTextTonewItemName(newItemName);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(3);
+		GenericUtils.delay(1);
 
 		item.findHsnCodePurchaseOrederClick();
-		GenericUtils.delay(3);
+		GenericUtils.delay(1);
 
 		item.searchHsnCodeBtnPurchaseOrderClick();
-		GenericUtils.delay(3);
+		GenericUtils.delay(1);
 
 		item.radioBtnHsnCodeSelectClick();
-		GenericUtils.delay(3);
+		GenericUtils.delay(1);
 
 		item.sellingPricePurchaseOrederSetText(sellingPrice);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		item.purchasePricePurchaseOrederSetText(purchasePrice);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(5);
+		GenericUtils.delay(1);
 
 		item.saveButtonPurchaseOrderClick();
 		GenericUtils.delay(2);
@@ -118,13 +118,13 @@ public class EXP_11_AddAPurchaseOrderByAddingANewItem extends BaseClass {
 		GenericUtils.delay(2);
 
 		expensesBill.verifyMessage();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		purchaseOrder.sendEmailButtonClick();
 		GenericUtils.delay(2);
 
 		expensesBill.verifyMessage();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 	}
 

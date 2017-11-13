@@ -4,19 +4,16 @@ import org.testng.annotations.Test;
 
 import com.application.libraries.ExcelLibrary;
 import com.application.libraries.GenericUtils;
-import com.application.pages.Expenses;
 import com.application.pages.ExpensesBill;
 import com.application.pages.HomePage;
-import com.application.pages.ItemInfo;
 import com.application.pages.PurchaseOrder;
 import com.application.pages.Recurring;
-import com.application.pages.VendorInformation;
 
 public class EXP_15_AddARecurringBillByAddingAnExistingVendor extends BaseClass {
 
 	String expensesSheet = "EXP_15";
 
-	@Test(description = "")
+	@Test(description = "Add a Recurring Bill by adding an Existing vendor")
 	public void addARecurringBillByAddingAnExistingVendor() {
 
 		HomePage homePage = new HomePage(driver);
@@ -43,62 +40,62 @@ public class EXP_15_AddARecurringBillByAddingAnExistingVendor extends BaseClass 
 		 */
 		GenericUtils.waitForLoadComplete(driver);
 		homePage.clickGotoExpenseListLink();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		GenericUtils.waitForLoadComplete(driver);
 		purchaseOrder.recurringBtnClick();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		GenericUtils.waitForLoadComplete(driver);
 		recurring.addRecurringBillBtnClick();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		recurring.selectOrAddVendorClick();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		recurring.selectOrAddVendorInputSetText(vendorName);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		recurring.frequencyDropDownClick();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		recurring.frequencyInput(frequency);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		recurring.endDateClick();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		recurring.endDateSetText(endDate);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		recurring.expenseTypeDropDownClick();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		recurring.expenseTypeInputSetText(expenseType);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		recurring.paymentTermsDropDownClick();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		recurring.paymentTermsInputSelect(paymentterm);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		recurring.itemNameclick();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		recurring.itemNameSetText(itemName);
 		GenericUtils.sendEnterKeys(driver);
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 
 		recurring.saveBtnClick();
 		GenericUtils.delay(2);
 
-		bill.getMessage();
-		GenericUtils.delay(2);
+		bill.verifyMessage();
+		GenericUtils.delay(1);
 
 	}
 
