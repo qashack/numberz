@@ -101,9 +101,21 @@ public class EmailPage extends TaxInvoicePage {
 	}
 	public EmailPage clickOnGetFinance()
 	{
+		GenericUtils.delay(2);
 		emailGetFinance.click();
 		return this;
 		
+	}
+	public EmailPage verifyGetFianance()
+	{
+		if(emailGetFinance.isSelected())
+		{
+			
+		}else
+		{
+			Assert.fail("Get fianance is not clicked");
+		}
+		return this;
 	}
 	public EmailPage setEmailTo(String email_to)
 	{

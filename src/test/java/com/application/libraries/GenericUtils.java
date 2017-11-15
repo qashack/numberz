@@ -437,7 +437,7 @@ public class GenericUtils {
 	public static void waitForLoadComplete(WebDriver driver){
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		
-		WebDriverWait wait = new WebDriverWait(driver, 30);
+		WebDriverWait wait = new WebDriverWait(driver, 180);
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//strong[text()='Please wait...']")));
 		
 		driver.manage().timeouts().implicitlyWait(Long.parseLong(GenericUtils.getConfigProperties("config/config.properties", "IMPLICIT_WAIT")),TimeUnit.SECONDS);		

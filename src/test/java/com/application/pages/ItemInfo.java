@@ -1,7 +1,5 @@
 package com.application.pages;
 
-import java.util.Map;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,9 +11,7 @@ import org.openqa.selenium.support.ui.Select;
 import com.application.libraries.GenericUtils;
 
 public class ItemInfo {
-	private Map<String, String> data;
 	private WebDriver driver;
-	private int timeout = 15;
 
 	@FindBy(css = "span.valign-middle")
 	private WebElement addNewItemSelect;
@@ -35,7 +31,6 @@ public class ItemInfo {
 	@FindBy(xpath = "//div[2]/button")
 	private WebElement searchHsnCodeBtn;
 	
-
 	@FindBy(xpath = "//div[@class='modal-body']//button[@class='btn font-10 padding-20 btn-green-border uppercase']")
 	private WebElement searchHsnCodeBtnPurchaseOrder;
 
