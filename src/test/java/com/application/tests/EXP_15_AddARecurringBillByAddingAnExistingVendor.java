@@ -92,7 +92,7 @@ public class EXP_15_AddARecurringBillByAddingAnExistingVendor extends BaseClass 
 		GenericUtils.delay(1);
 
 		recurring.saveBtnClick();
-		GenericUtils.delay(2);
+		//GenericUtils.delay(2);
 
 		bill.verifyMessage();
 		GenericUtils.delay(1);

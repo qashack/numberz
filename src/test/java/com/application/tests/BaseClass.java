@@ -163,6 +163,7 @@ public class BaseClass {
 	@AfterClass
 	public void classPostconditions() {
 		driver.quit();
+		GenericUtils.delay(5);
 		ExtentTestManager.getTest().log(LogStatus.INFO, "Browser closed");
 		ExtentManager.getReporter().endTest(ExtentTestManager.getTest());
 		ExtentManager.getReporter().flush();

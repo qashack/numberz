@@ -17,7 +17,7 @@ public class Inv_23_AddInvoiceWithAllThefieldFilled extends BaseClass{
 	String notes=ExcelLibrary.getExcelData(filePath_invoice, sheetName, 1, 13);
 	
 	
-	@Test(description = "Add attachments while creating the invoice")
+	@Test(description = "Send the Invoice creation email with all the data populated")
 	public void addInvoiceExCustomer() {
 		/*
 		 * Login into application

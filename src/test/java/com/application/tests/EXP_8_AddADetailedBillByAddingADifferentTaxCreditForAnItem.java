@@ -73,7 +73,7 @@ public class EXP_8_AddADetailedBillByAddingADifferentTaxCreditForAnItem extends 
 		GenericUtils.delay(1);
 
 		expensesBill.clickSaveButton();
-		GenericUtils.delay(2);
+	//	GenericUtils.delay(2);
 
 		expensesBill.verifyMessage();
 		GenericUtils.delay(1);

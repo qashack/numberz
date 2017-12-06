@@ -144,7 +144,7 @@ public class EXP_5_AddADetailedBillByAddingANewItem extends BaseClass {
 		GenericUtils.delay(1);
 
 		item.saveButtonclick();
-		GenericUtils.delay(2);
+		//GenericUtils.delay(2);
 		
 		expensesBill.verifyMessage();
 		GenericUtils.delay(2);

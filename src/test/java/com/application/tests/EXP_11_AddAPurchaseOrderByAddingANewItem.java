@@ -109,19 +109,19 @@ public class EXP_11_AddAPurchaseOrderByAddingANewItem extends BaseClass {
 		GenericUtils.delay(1);
 
 		item.saveButtonPurchaseOrderClick();
-		GenericUtils.delay(2);
+		//GenericUtils.delay(2);
 
 		expensesBill.verifyMessage();
 		GenericUtils.delay(2);
 
 		purchaseOrder.sendPurchaseButtonClick();
-		GenericUtils.delay(2);
+		//GenericUtils.delay(2);
 
 		expensesBill.verifyMessage();
 		GenericUtils.delay(1);
 
 		purchaseOrder.sendEmailButtonClick();
-		GenericUtils.delay(2);
+		//GenericUtils.delay(2);
 
 		expensesBill.verifyMessage();
 		GenericUtils.delay(1);

@@ -46,7 +46,7 @@ public class EXP_21_AddFileAttachmentInTheQuickBill extends BaseClass {
 		GenericUtils.delay(1);
 
 		expenses.clickSaveLink();
-		GenericUtils.delay(2);
+	//	GenericUtils.delay(2);
 
 		bill.verifyMessage();
 		GenericUtils.delay(1);

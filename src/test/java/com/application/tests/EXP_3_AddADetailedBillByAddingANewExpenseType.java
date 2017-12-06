@@ -21,7 +21,7 @@ public class EXP_3_AddADetailedBillByAddingANewExpenseType extends BaseClass {
 		String vendor = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 0);
 		String billNumber = expensesBill.generateRandomBillNumber();
 		String expenseTypeArray = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 1);
-		String expenseType = expensesBill.getRandomStringfromArray(expenseTypeArray, GenericUtils.randomNumber("6"));
+		String expenseType = expensesBill.getRandomStringfromArray(expenseTypeArray, GenericUtils.randomNumber("2"));
 		String itemName = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 2);
 
 		/**
@@ -62,7 +62,7 @@ public class EXP_3_AddADetailedBillByAddingANewExpenseType extends BaseClass {
 		GenericUtils.delay(1);
 
 		expensesBill.clickSaveButton();
-		GenericUtils.delay(2);
+		//GenericUtils.delay(2);
 		
 		expensesBill.verifyMessage();
 		GenericUtils.delay(2);

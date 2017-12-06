@@ -83,7 +83,7 @@ public class EXP_1_AddADetailedBillByAddingANewVendor extends BaseClass {
 		vendorInfo.clickSave1Button();
 		GenericUtils.delay(2);
 
-		vendorInfo.gstinAlredyExistYesBtnClick();
+		vendorInfo.clickOnYesButton();
 
 		bill.verifyMessage();
 		GenericUtils.delay(2);
@@ -109,7 +109,7 @@ public class EXP_1_AddADetailedBillByAddingANewVendor extends BaseClass {
 		GenericUtils.delay(1);
 
 		bill.clickSaveButton();
-		GenericUtils.delay(1);
+		//GenericUtils.delay(2);
 
 		bill.verifyMessage();
 		GenericUtils.delay(1);

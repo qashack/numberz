@@ -36,7 +36,7 @@ public class EXP_20_AddAQuickBillByAddingaAmount extends BaseClass {
 		GenericUtils.delay(1);
 
 		expenses.clickSaveLink();
-		GenericUtils.delay(2);
+	//	GenericUtils.delay(2);
 
 		bill.verifyMessage();
 		GenericUtils.delay(1);

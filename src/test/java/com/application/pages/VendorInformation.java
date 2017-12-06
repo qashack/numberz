@@ -1,8 +1,14 @@
 package com.application.pages;
 
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import com.application.libraries.GenericUtils;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -157,5 +163,36 @@ public class VendorInformation {
 	
 	public void gstinAlredyExistYesBtnClick() {
 		gstinAlredyExistYesBtn.click();
+	}
+	
+	public void clickOnYesButton() {
+		boolean status = verifyPopUp();
+		System.out.println(status);
+		if (status) {
+			
+		} else {
+			driver.findElement(By.xpath(
+					"//div[@class='modal-body']//button[@class='btn btn-modal-blue font-12 uppercase' and text()='Yes']"))
+					.click();
+		}
+	}
+	private boolean verifyPopUp() {
+		boolean status;
+		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+		int size = driver.findElements(By.className("toast-message")).size();
+
+		System.out.println("size" + size);
+
+		if (size > 0) {
+
+			status = true;
+		} else {
+
+			status = false;
+		}
+		driver.manage().timeouts().implicitlyWait(
+				Long.parseLong(GenericUtils.getConfigProperties("config/config.properties", "IMPLICIT_WAIT")),
+				TimeUnit.SECONDS);
+		return status;
 	}
 }

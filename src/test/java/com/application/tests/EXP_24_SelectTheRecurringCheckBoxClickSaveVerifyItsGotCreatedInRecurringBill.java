@@ -102,8 +102,7 @@ public class EXP_24_SelectTheRecurringCheckBoxClickSaveVerifyItsGotCreatedInRecu
 		GenericUtils.delay(1);
 
 		expenses.clickSaveLink();
-		GenericUtils.delay(2);
-
+		
 		bill.verifyMessage();
 		GenericUtils.delay(2);
 

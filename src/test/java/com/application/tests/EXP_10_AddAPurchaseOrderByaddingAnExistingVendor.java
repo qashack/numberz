@@ -80,7 +80,7 @@ public class EXP_10_AddAPurchaseOrderByaddingAnExistingVendor extends BaseClass 
 		GenericUtils.delay(1);
 
 		purchaseOrder.savePurchaseOrderClick();
-		GenericUtils.delay(2);
+		//GenericUtils.delay(2);
 
 		expensesBill.verifyMessage();
 		GenericUtils.delay(1);

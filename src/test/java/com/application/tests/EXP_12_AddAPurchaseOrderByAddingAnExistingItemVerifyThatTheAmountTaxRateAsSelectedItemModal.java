@@ -83,7 +83,7 @@ public class EXP_12_AddAPurchaseOrderByAddingAnExistingItemVerifyThatTheAmountTa
 		GenericUtils.delay(1);
 
 		purchaseOrder.sendPurchaseButtonClick();
-		GenericUtils.delay(2);
+	//	GenericUtils.delay(2);
 
 		expensesBill.verifyMessage();
 		GenericUtils.delay(1);

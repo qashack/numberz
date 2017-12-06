@@ -73,7 +73,7 @@ public class EXP_19_AddAQuickBillByAddingANewVendor extends BaseClass {
 		GenericUtils.delay(1);
 
 		vendorInfo.clickSave1Button();
-		GenericUtils.delay(2);
+		//GenericUtils.delay(2);
 		
 		bill.verifyMessage();
 		GenericUtils.delay(2);
@@ -82,7 +82,7 @@ public class EXP_19_AddAQuickBillByAddingANewVendor extends BaseClass {
 		GenericUtils.delay(1);
 
 		expenses.clickSaveLink();
-		GenericUtils.delay(2);
+	//	GenericUtils.delay(2);
 
 		bill.verifyMessage();
 		GenericUtils.delay(1);

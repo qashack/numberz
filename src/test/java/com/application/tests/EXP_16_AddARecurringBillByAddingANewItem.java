@@ -156,13 +156,13 @@ public class EXP_16_AddARecurringBillByAddingANewItem extends BaseClass {
 		GenericUtils.delay(1);
 
 		item.saveBtnRecurringBillClick();
-		GenericUtils.delay(3);
+	//	GenericUtils.delay(2);
 
 		expensesBill.verifyMessage();
 		GenericUtils.delay(2);
 
 		recurring.saveBtnClick();
-		GenericUtils.delay(3);
+		//GenericUtils.delay(2);
 
 		expensesBill.verifyMessage();
 		GenericUtils.delay(1);

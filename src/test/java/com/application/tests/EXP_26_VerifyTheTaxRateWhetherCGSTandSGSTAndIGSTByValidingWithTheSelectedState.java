@@ -62,7 +62,7 @@ public class EXP_26_VerifyTheTaxRateWhetherCGSTandSGSTAndIGSTByValidingWithTheSe
 		GenericUtils.delay(1);
 
 		vendorInfo.yesBtnClick();
-		GenericUtils.delay(2);
+		//GenericUtils.delay(2);
 
 		bill.verifyMessage();
 		GenericUtils.delay(2);

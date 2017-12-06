@@ -47,7 +47,7 @@ public class EXP_23_SelectPaymentMethodVerifyItStatusGotChangedToPaid extends Ba
 		GenericUtils.delay(1);
 		
 		expenses.clickSaveLink();
-		GenericUtils.delay(2);
+		//GenericUtils.delay(2);
 
 		bill.verifyMessage();
 		GenericUtils.delay(1);

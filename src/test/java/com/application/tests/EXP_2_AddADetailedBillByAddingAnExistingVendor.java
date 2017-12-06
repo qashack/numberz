@@ -76,7 +76,7 @@ public class EXP_2_AddADetailedBillByAddingAnExistingVendor extends BaseClass {
 		GenericUtils.delay(1);
 
 		expensesBill.clickSaveButton();
-		GenericUtils.delay(2);
+	//	GenericUtils.delay(2);
 		
 		expensesBill.verifyMessage();
 		GenericUtils.delay(1);

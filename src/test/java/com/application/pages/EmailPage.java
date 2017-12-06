@@ -106,14 +106,15 @@ public class EmailPage extends TaxInvoicePage {
 		return this;
 		
 	}
-	public EmailPage verifyGetFianance()
+	public EmailPage verifyGetFianance(int k)
 	{
-		if(emailGetFinance.isSelected())
+		System.out.println("k is"+k);
+		if(k>0)
 		{
 			
 		}else
 		{
-			Assert.fail("Get fianance is not clicked");
+			Assert.fail("Get fianance is not in recieved email");
 		}
 		return this;
 	}

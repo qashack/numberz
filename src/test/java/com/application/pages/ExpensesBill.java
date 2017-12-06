@@ -2,10 +2,12 @@ package com.application.pages;
 
 import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -202,8 +204,8 @@ public class ExpensesBill {
 	}
 
 	/**
-	 * Click on Chat Icon Three Small Dots To Indicate That An Agent Is
-	 * Available To Chat0how Can We Help Button.
+	 * Click on Chat Icon Three Small Dots To Indicate That An Agent Is Available To
+	 * Chat0how Can We Help Button.
 	 *
 	 * @return the ExpensesBill class instance.
 	 */
@@ -867,8 +869,7 @@ public class ExpensesBill {
 	}
 
 	/**
-	 * Unset default value from Select Or Add An Itemselect Drop Down List
-	 * field.
+	 * Unset default value from Select Or Add An Itemselect Drop Down List field.
 	 *
 	 * @return the ExpensesBill class instance.
 	 */
@@ -887,8 +888,7 @@ public class ExpensesBill {
 	}
 
 	/**
-	 * Unset default value from Select Or Add An Itemselect Drop Down List
-	 * field.
+	 * Unset default value from Select Or Add An Itemselect Drop Down List field.
 	 *
 	 * @return the ExpensesBill class instance.
 	 */
@@ -962,10 +962,15 @@ public class ExpensesBill {
 	}
 
 	public void verifyMessage() {
-		String message = driver.findElement(By.className("toast-message")).getText();
+		driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.className("toast-message")));
+		WebElement element = driver.findElement(By.className("toast-message"));
+		String message = element.getText();
 		System.out.println(message);
 
-		if (message.contains("Success!")||message.contains("created!") || message.contains("New") ) {
+		if (message.contains("Success!") || message.contains("created!") || message.contains("New")|| message.contains("sent")) {
 			Assert.assertTrue(true);
 		} else {
 			Assert.fail(message);

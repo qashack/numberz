@@ -78,7 +78,7 @@ public class EXP_9_AddAPurchaseOrderByAddingANewVendor extends BaseClass {
 		GenericUtils.delay(1);
 
 		newVendorAdd.saveButtonClick();
-		GenericUtils.delay(2);
+		//GenericUtils.delay(2);
 		
 		//information.gstinAlredyExistYesBtnClick();
 
@@ -112,7 +112,7 @@ public class EXP_9_AddAPurchaseOrderByAddingANewVendor extends BaseClass {
 		GenericUtils.delay(1);
 
 		purchaseOrder.savePurchaseOrderClick();
-		GenericUtils.delay(2);
+	//	GenericUtils.delay(2);
 
 		expensesBill.verifyMessage();
 		GenericUtils.delay(1);

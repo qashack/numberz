@@ -40,7 +40,8 @@ public class Inv_14_AddInvoiceByOveridingSequence extends BaseClass {
 		//Click on Sequence override
 		invoicePage.clickInvoiceOverideSequence();
 		//Send sequence Number
-		invoicePage.setInvoiceSequenceTextField(GenericUtils.randomNumber());
+		String number=("1000"+Integer.toString(GenericUtils.randomNumber("1000")));
+		invoicePage.setInvoiceSequenceTextField(number);
 		/*
 		 * Add an item
 		 */

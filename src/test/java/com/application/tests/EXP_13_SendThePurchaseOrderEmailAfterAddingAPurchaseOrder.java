@@ -83,13 +83,13 @@ public class EXP_13_SendThePurchaseOrderEmailAfterAddingAPurchaseOrder extends B
 		GenericUtils.delay(1);
 
 		purchaseOrder.sendPurchaseButtonClick();
-		GenericUtils.delay(2);
+		//GenericUtils.delay(2);
 
 		expensesBill.verifyMessage();
 		GenericUtils.delay(2);
 
 		purchaseOrder.sendEmailButtonClick();
-		GenericUtils.delay(1);
+		//GenericUtils.delay(2);
 
 		expensesBill.verifyMessage();
 		GenericUtils.delay(1);
