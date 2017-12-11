@@ -1,5 +1,8 @@
 package com.application.tests;
 
+import java.io.File;
+import java.io.IOException;
+
 import org.testng.annotations.Test;
 
 import com.application.libraries.ExcelLibrary;
@@ -12,10 +15,23 @@ public class Inv_15_AddInvoiceByAttachingAFile extends BaseClass {
 	String sheetName = "INV_15";
 	String item_name = ExcelLibrary.getExcelData(filePath_invoice, sheetName, 1, 9);
 	String existing_customer = ExcelLibrary.getExcelData(filePath_invoice, sheetName, 1, 0);
-	String path = ExcelLibrary.getExcelData(filePath_invoice, sheetName, 1, 10);
-
+	String file = ExcelLibrary.getExcelData(filePath_invoice, sheetName, 1, 10);
+	
 	@Test(description = "Add attachments while creating the invoice")
 	public void addInvoiceExCustomer() {
+		String abspath="./sample/"+file;
+		File f=new File(abspath);
+		String Abspath="";
+		try {
+			Abspath = f.getCanonicalPath();
+			Abspath=Abspath.replaceAll("\\\\","/");
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		System.out.println(Abspath);
+	
+		
 		/*
 		 * Login into application
 		 */
@@ -45,16 +61,16 @@ public class Inv_15_AddInvoiceByAttachingAFile extends BaseClass {
 		/*
 		 * Attach a file
 		 */
-		invoicePage.addAnAttachment(path);
+		invoicePage.addAnAttachment(Abspath);
 		/*
 		 * Verify attached file
 		 */
-		invoicePage.verifyAttachment(path);
+		invoicePage.verifyAttachment(Abspath);
 		/*
 		 * Click send button
 		 */
 		invoicePage.clickSend1Button();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 		invoicePage.verifyMessage();
 		
 	}

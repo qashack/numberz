@@ -73,7 +73,7 @@ public class Inv_7_AddInvoiceForUnionTeritoryNewCustomerVerifyUgst extends BaseC
 		 */
 		customerinfo.clickSend1Button();
 
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 		customerinfo.verifyMessage();
 		GenericUtils.waitForLoadComplete(driver);
 		customerinfo.clickEmailCanceButton();

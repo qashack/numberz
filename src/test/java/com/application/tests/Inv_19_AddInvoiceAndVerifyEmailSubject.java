@@ -61,7 +61,7 @@ public class Inv_19_AddInvoiceAndVerifyEmailSubject extends BaseClass {
 		 * 
 		 */
 		invoicePage.clickSend1Button();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 		invoicePage.verifyMessage();
 		/*
 		 * Email verify subject

@@ -7,6 +7,7 @@ import com.application.libraries.GenericUtils;
 import com.application.pages.Expenses;
 import com.application.pages.ExpensesBill;
 import com.application.pages.HomePage;
+import com.application.pages.VendorInformation;
 
 public class EXP_22_AddNotesInTheQuickBill extends BaseClass {
 	String expensesSheet = "EXP_22";
@@ -17,6 +18,7 @@ public class EXP_22_AddNotesInTheQuickBill extends BaseClass {
 		HomePage homePage = new HomePage(driver);
 		Expenses expenses = new Expenses(driver);
 		ExpensesBill bill = new ExpensesBill(driver);
+		VendorInformation vendorInfo = new VendorInformation(driver);
 
 		String amount = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 0);
 		String note = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 1);
@@ -48,6 +50,8 @@ public class EXP_22_AddNotesInTheQuickBill extends BaseClass {
 		
 		expenses.clickSaveLink();
 		//GenericUtils.delay(2);
+		
+		vendorInfo.clickOnYesButton();
 
 		bill.verifyMessage();
 		GenericUtils.delay(1);

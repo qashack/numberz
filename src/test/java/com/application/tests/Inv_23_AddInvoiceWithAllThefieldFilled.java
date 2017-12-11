@@ -1,5 +1,7 @@
 package com.application.tests;
 
+import java.io.File;
+
 import org.testng.annotations.Test;
 
 import com.application.libraries.ExcelLibrary;
@@ -11,7 +13,7 @@ public class Inv_23_AddInvoiceWithAllThefieldFilled extends BaseClass{
 	String sheetName = "INV_23";
 	String item_name = ExcelLibrary.getExcelData(filePath_invoice, sheetName, 1, 9);
 	String existing_customer = ExcelLibrary.getExcelData(filePath_invoice, sheetName, 1, 0);
-	String path = ExcelLibrary.getExcelData(filePath_invoice, sheetName, 1, 10);
+	String file = ExcelLibrary.getExcelData(filePath_invoice, sheetName, 1, 10);
 	String paymentDetails=ExcelLibrary.getExcelData(filePath_invoice, sheetName, 1, 11);
 	String termsAndConditions=ExcelLibrary.getExcelData(filePath_invoice, sheetName, 1, 12);
 	String notes=ExcelLibrary.getExcelData(filePath_invoice, sheetName, 1, 13);
@@ -19,6 +21,10 @@ public class Inv_23_AddInvoiceWithAllThefieldFilled extends BaseClass{
 	
 	@Test(description = "Send the Invoice creation email with all the data populated")
 	public void addInvoiceExCustomer() {
+		String abspath="./sample/"+file;
+		File f=new File(abspath);
+		String Abspath=f.getAbsolutePath();
+		System.out.println(Abspath);
 		/*
 		 * Login into application
 		 */
@@ -48,7 +54,7 @@ public class Inv_23_AddInvoiceWithAllThefieldFilled extends BaseClass{
 		/*
 		 * Attach a file
 		 */
-		invoicePage.addAnAttachment(path);
+		invoicePage.addAnAttachment(Abspath);
 		//Add payment details
 		invoicePage.setInvoicePaymentDetailsTextareaField(paymentDetails);
 		//Add Terms and Conditions
@@ -60,7 +66,7 @@ public class Inv_23_AddInvoiceWithAllThefieldFilled extends BaseClass{
 		 * 
 		 */
 		invoicePage.clickSend1Button();
-		GenericUtils.delay(3);
+		GenericUtils.delay(1);
 		invoicePage.verifyMessage();
 		
 	}

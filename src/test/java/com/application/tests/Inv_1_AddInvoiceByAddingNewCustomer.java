@@ -71,7 +71,7 @@ public class Inv_1_AddInvoiceByAddingNewCustomer extends BaseClass{
 		 */
 		GenericUtils.waitForLoadComplete(driver);
 		customerinfo.clickEmailSendButton();
-		GenericUtils.delay(3);
+		GenericUtils.delay(1);
 		customerinfo.verifyMessage();
 		
 		

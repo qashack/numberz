@@ -70,7 +70,7 @@ public class Inv_21_AddInvoiceAndVerifyGetFinance extends BaseClass {
 		 * 
 		 */
 		invoicePage.clickSend1Button();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 		invoicePage.verifyMessage();
 		/*
 		 * Click on get finance method and verify it
@@ -79,7 +79,7 @@ public class Inv_21_AddInvoiceAndVerifyGetFinance extends BaseClass {
 		email.setEmailTo(username);
 		email.clickOnGetFinance();
 		email.clickEmailSendButton();
-		GenericUtils.delay(5);
+		GenericUtils.delay(60);
 		//Check email recieved
 		checkEmailOption();
 		 //Verify email contains Get finance

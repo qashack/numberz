@@ -7,6 +7,7 @@ import com.application.libraries.GenericUtils;
 import com.application.pages.Expenses;
 import com.application.pages.ExpensesBill;
 import com.application.pages.HomePage;
+import com.application.pages.VendorInformation;
 
 public class EXP_20_AddAQuickBillByAddingaAmount extends BaseClass {
 	String expensesSheet = "EXP_20";
@@ -17,6 +18,7 @@ public class EXP_20_AddAQuickBillByAddingaAmount extends BaseClass {
 		Expenses expenses = new Expenses(driver);
 		ExpensesBill bill = new ExpensesBill(driver);
 		ExpensesBill expensesBill = new ExpensesBill(driver);
+		VendorInformation vendorInfo = new VendorInformation(driver);
 
 		String amountArray = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 0);
 		String amount = expensesBill.getRandomStringfromArray(amountArray, GenericUtils.randomNumber("10"));
@@ -37,6 +39,8 @@ public class EXP_20_AddAQuickBillByAddingaAmount extends BaseClass {
 
 		expenses.clickSaveLink();
 	//	GenericUtils.delay(2);
+		
+		vendorInfo.clickOnYesButton();
 
 		bill.verifyMessage();
 		GenericUtils.delay(1);

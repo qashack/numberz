@@ -65,7 +65,7 @@ public class Inv_8_AddInvoiceByAddingOverseesVerifyIgst extends BaseClass {
 		 * 
 		 */
 		customerinfo.clickSend1Button();
-		GenericUtils.delay(3);
+		GenericUtils.delay(1);
 
 		customerinfo.verifyMessage();
 	}

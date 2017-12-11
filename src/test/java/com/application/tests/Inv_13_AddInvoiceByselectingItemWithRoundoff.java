@@ -53,7 +53,7 @@ public class Inv_13_AddInvoiceByselectingItemWithRoundoff extends BaseClass {
 		 * 
 		 */
 		invoicePage.clickSend1Button();
-		GenericUtils.delay(3);
+		GenericUtils.delay(1);
 		invoicePage.verifyMessage();
 	
 	}

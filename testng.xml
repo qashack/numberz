@@ -3,36 +3,31 @@
 <suite name="Suite" verbose="3">
 	<test name="Test">
 		<classes>
-			<class name="com.application.tests.Init" />
-			<class name="com.application.tests.Inv_1_AddInvoiceByAddingNewCustomer" />
-			<class name="com.application.tests.Inv_2_AddInvoiceToExistingCustomer" />
-			<class name="com.application.tests.Inv_3_AddInvoicewithTds" />
-			<class name="com.application.tests.Inv_4_AddInvoiceVerifyCgst" />
-			<class name="com.application.tests.Inv_5_AddInvoiceVerifyIgst" />
-			<class name="com.application.tests.Inv_6_AddInvoiceByselectingSez" />
-			<class
-				name="com.application.tests.Inv_7_AddInvoiceForUnionTeritoryNewCustomerVerifyUgst" />
-			<class
-				name="com.application.tests.Inv_8_AddInvoiceByAddingOverseesVerifyIgst" />
-			<class name="com.application.tests.Inv_9_AddInvoiceByAddingNewItem" />
-			<class name="com.application.tests.Inv_10_AddInvoiceForExistingItem" />
-			<class name="com.application.tests.Inv_11_AddItemWithHsnVerifyTaxRate" />
-			<class
-				name="com.application.tests.Inv_12_AddInvoiceByAddingDiscountAndVerifyit" />
-			<class
-				name="com.application.tests.Inv_13_AddInvoiceByselectingItemWithRoundoff" />
-			<class name="com.application.tests.Inv_14_AddInvoiceByOveridingSequence" />
-			<class name="com.application.tests.Inv_15_AddInvoiceByAttachingAFile" />
-			<class name="com.application.tests.Inv_16_AddInvoiceByAddingPaymentTerms" />
-			<class
-				name="com.application.tests.Inv_17_AddInvoiceByadiingnewCustomerAndItemHitsendButton" />
-			<class name="com.application.tests.Inv_18_AddInvoiceAndCheckEmailtoandcc" />
-			<class name="com.application.tests.Inv_19_AddInvoiceAndVerifyEmailSubject" />
-			<class name="com.application.tests.Inv_20_AddInvoiceAndVerifyEmailBody" />
-			<class name="com.application.tests.Inv_21_AddInvoiceAndVerifyGetFinance" />
-			<class
-				name="com.application.tests.Inv_22_AddInvoiceAndVerifyPaynowInEmail" />
-			<class name="com.application.tests.Inv_23_AddInvoiceWithAllThefieldFilled" />
+			 <class name="com.application.tests.Init"/>
+      <class name="com.application.tests.Inv_1_AddInvoiceByAddingNewCustomer"/>
+      <class name="com.application.tests.Inv_2_AddInvoiceToExistingCustomer"/>
+      <class name="com.application.tests.Inv_3_AddInvoicewithTds"/>
+      <class name="com.application.tests.Inv_4_AddInvoiceVerifyCgst"/>
+      <class name="com.application.tests.Inv_5_AddInvoiceVerifyIgst"/>
+      <class name="com.application.tests.Inv_6_AddInvoiceByselectingSez"/>
+       <class name="com.application.tests.Inv_8_AddInvoiceByAddingOverseesVerifyIgst"/>
+      <class name="com.application.tests.Inv_7_AddInvoiceForUnionTeritoryNewCustomerVerifyUgst"/>
+      <class name="com.application.tests.Inv_9_AddInvoiceByAddingNewItem"/>
+      <class name="com.application.tests.Inv_10_AddInvoiceForExistingItem"/>
+      <class name="com.application.tests.Inv_11_AddItemWithHsnVerifyTaxRate"/>
+      <class name="com.application.tests.Inv_12_AddInvoiceByAddingDiscountAndVerifyit"/>
+      <class name="com.application.tests.Inv_13_AddInvoiceByselectingItemWithRoundoff"/>
+      <class name="com.application.tests.Inv_14_AddInvoiceByOveridingSequence"/>
+      <class name="com.application.tests.Inv_15_AddInvoiceByAttachingAFile"/>
+      <class name="com.application.tests.Inv_16_AddInvoiceByAddingPaymentTerms"/>
+      <class name="com.application.tests.Inv_17_AddInvoiceByadiingnewCustomerAndItemHitsendButton"/>
+      <class name="com.application.tests.Inv_18_AddInvoiceAndCheckEmailtoandcc"/>
+      <class name="com.application.tests.Inv_19_AddInvoiceAndVerifyEmailSubject"/>
+      <class name="com.application.tests.Inv_20_AddInvoiceAndVerifyEmailBody"/>
+      <class name="com.application.tests.Inv_21_AddInvoiceAndVerifyGetFinance"/>
+      <class name="com.application.tests.Inv_22_AddInvoiceAndVerifyPaynowInEmail"/>
+      <class name="com.application.tests.Inv_23_AddInvoiceWithAllThefieldFilled"/>
+			<class name="com.application.tests.InitExpense" />
 			<class
 				name="com.application.tests.EXP_1_AddADetailedBillByAddingANewVendor" />
 			<class

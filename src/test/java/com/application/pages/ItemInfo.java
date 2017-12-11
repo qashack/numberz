@@ -22,7 +22,7 @@ public class ItemInfo {
 	@FindBy(xpath = "html/body/div[4]/div/div[2]/div/div/div/div/div[3]/div[2]/div[1]/input")
 	private WebElement newItemName;
 
-	@FindBy(xpath = "//div[2]/div[2]/div/span")
+	@FindBy(xpath = "//span[text()='Find HSN code']")
 	private WebElement findHsnCode;
 
 	@FindBy(xpath = "(//div[@class='container-fluid']//span)[8]")

@@ -56,7 +56,7 @@ public class Inv_17_AddInvoiceByadiingnewCustomerAndItemHitsendButton extends Ba
 		 * 
 		 */
 		customerinfo.clickSend1Button();
-		GenericUtils.delay(3);
+		GenericUtils.delay(1);
 
 		customerinfo.verifyMessage();
 	

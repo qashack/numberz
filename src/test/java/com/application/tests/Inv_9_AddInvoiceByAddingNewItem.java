@@ -49,7 +49,7 @@ public class Inv_9_AddInvoiceByAddingNewItem extends BaseClass {
 		 */
 		GenericUtils.waitForLoadComplete(driver);
 		iteminfo.clickSend1Button();
-		GenericUtils.delay(3);
+		GenericUtils.delay(1);
 		iteminfo.verifyMessage();
 
 	}

@@ -51,10 +51,9 @@ public class Inv_14_AddInvoiceByOveridingSequence extends BaseClass {
 		 * 
 		 */
 		invoicePage.clickSend1Button();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 		invoicePage.setYesInSequenceOverride();
-		GenericUtils.delay(2);
-		invoicePage.verifyMessage();
+		
 		
 		
 	}

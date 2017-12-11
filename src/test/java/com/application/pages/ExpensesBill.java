@@ -166,7 +166,7 @@ public class ExpensesBill {
 	@FindBy(xpath = "//table[@id='LineItemTable']/tbody/tr/td[10]/select")
 	private WebElement purchaseType;
 
-	@FindBy(xpath = "//table[@id='LineItemTable']/tbody/tr/td[11]/select")
+	@FindBy(xpath = "(//select[@class='form-control grey-border border-radius-6 font-12 padding-5'])[1]")
 	private WebElement taxCredit;
 
 	@FindBy(xpath = "//div[contains(@class,'CreateInvoiceContainer')]//div[@class='Select-menu-outer']//*[contains(text(),'Add New Vendor')]")
@@ -945,7 +945,8 @@ public class ExpensesBill {
 	}
 
 	public ExpensesBill clickorSelectTaxCredit(String taxCredi) {
-		taxCredit.sendKeys(taxCredi);
+		new Select(taxCredit).selectByVisibleText(taxCredi);
+		//taxCredit.sendKeys(taxCredi);
 		return this;
 	}
 

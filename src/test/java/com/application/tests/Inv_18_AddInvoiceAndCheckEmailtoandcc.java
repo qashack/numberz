@@ -59,7 +59,7 @@ public class Inv_18_AddInvoiceAndCheckEmailtoandcc extends BaseClass {
 		 * 
 		 */
 		customerinfo.clickSend1Button();
-		GenericUtils.delay(3);
+		GenericUtils.delay(1);
 		customerinfo.verifyMessage();
 		/*
 		 * email verification

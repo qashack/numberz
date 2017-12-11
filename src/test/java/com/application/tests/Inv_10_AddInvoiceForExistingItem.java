@@ -49,7 +49,7 @@ public class Inv_10_AddInvoiceForExistingItem extends BaseClass {
 		 * 
 		 */
 		invoicePage.clickSend1Button();
-		GenericUtils.delay(3);
+		GenericUtils.delay(1);
 		invoicePage.verifyMessage();
 		
 

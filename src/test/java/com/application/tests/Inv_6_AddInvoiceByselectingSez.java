@@ -62,7 +62,7 @@ public class Inv_6_AddInvoiceByselectingSez extends BaseClass{
 		 * 
 		 */
 		customerinfo.clickSend1Button();
-		GenericUtils.delay(3);
+		GenericUtils.delay(1);
 
 		customerinfo.verifyMessage();
 		

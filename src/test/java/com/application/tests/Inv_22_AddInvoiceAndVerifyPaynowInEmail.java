@@ -59,7 +59,7 @@ public class Inv_22_AddInvoiceAndVerifyPaynowInEmail extends BaseClass{
 		 * 
 		 */
 		customerinfo.clickSend1Button();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 		customerinfo.verifyMessage();
 		/*
 		 * Click on pay now and verification

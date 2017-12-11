@@ -68,7 +68,7 @@ public class Inv_2_AddInvoiceToExistingCustomer extends BaseClass {
 		 * Send an email
 		 */
 		invoicePage.clickEmailSendButton();
-		GenericUtils.delay(3);
+		GenericUtils.delay(1);
 		invoicePage.verifyMessage();
 
 	}

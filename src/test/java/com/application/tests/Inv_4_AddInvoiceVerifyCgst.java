@@ -59,7 +59,7 @@ public class Inv_4_AddInvoiceVerifyCgst extends BaseClass {
 		 * 
 		 */
 		customerinfo.clickSend1Button();
-		GenericUtils.delay(3);
+		GenericUtils.delay(1);
 		customerinfo.verifyMessage();
 		
 		

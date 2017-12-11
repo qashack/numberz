@@ -53,7 +53,7 @@ public class Inv_16_AddInvoiceByAddingPaymentTerms  extends BaseClass{
 		 * 
 		 */
 		invoicePage.clickSend1Button();
-		GenericUtils.delay(2);
+		GenericUtils.delay(1);
 		invoicePage.verifyMessage();
 		
 		
