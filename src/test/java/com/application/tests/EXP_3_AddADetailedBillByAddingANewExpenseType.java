@@ -6,6 +6,7 @@ import com.application.libraries.GenericUtils;
 import com.application.pages.Expenses;
 import com.application.pages.ExpensesBill;
 import com.application.pages.HomePage;
+import com.application.pages.VendorInformation;
 
 public class EXP_3_AddADetailedBillByAddingANewExpenseType extends BaseClass {
 
@@ -17,7 +18,8 @@ public class EXP_3_AddADetailedBillByAddingANewExpenseType extends BaseClass {
 		HomePage homePage = new HomePage(driver);
 		Expenses expenses = new Expenses(driver);
 		ExpensesBill expensesBill = new ExpensesBill(driver);
-
+		VendorInformation vendorInfo = new VendorInformation(driver);
+		
 		String vendor = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 0);
 		String billNumber = expensesBill.generateRandomBillNumber();
 		String expenseTypeArray = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 1);
@@ -63,6 +65,8 @@ public class EXP_3_AddADetailedBillByAddingANewExpenseType extends BaseClass {
 
 		expensesBill.clickSaveButton();
 		//GenericUtils.delay(2);
+		
+		vendorInfo.clickOnYesButton();
 		
 		expensesBill.verifyMessage();
 		GenericUtils.delay(2);
