@@ -31,6 +31,9 @@ public class ExpensesBill {
 	@FindBy(xpath = "//label[text()='Expense Type']/..//span[@class='Select-arrow']")
 	private WebElement expenseTypebtnArrowBtn;
 
+	@FindBy(xpath = "//div[@class='input-group']/input")
+	private WebElement toEmailIdInput;
+
 	public void clickexpenseTypebtn() {
 		expenseTypebtnArrowBtn.click();
 		JavascriptLibrary.javascriptClickElement(driver, expenseTypebtnArrowBtn);
@@ -946,7 +949,7 @@ public class ExpensesBill {
 
 	public ExpensesBill clickorSelectTaxCredit(String taxCredi) {
 		new Select(taxCredit).selectByVisibleText(taxCredi);
-		//taxCredit.sendKeys(taxCredi);
+		// taxCredit.sendKeys(taxCredi);
 		return this;
 	}
 
@@ -971,7 +974,8 @@ public class ExpensesBill {
 		String message = element.getText();
 		System.out.println(message);
 
-		if (message.contains("Success!") || message.contains("created!") || message.contains("New")|| message.contains("sent")) {
+		if (message.contains("Success!") || message.contains("created!") || message.contains("New")
+				|| message.contains("sent")) {
 			Assert.assertTrue(true);
 		} else {
 			Assert.fail(message);
@@ -992,6 +996,12 @@ public class ExpensesBill {
 
 	public void addNewVendorquickBill() {
 		addNewVendorquickBill.click();
+	}
+
+	public void checkToEmailIdIsEmpty() {
+		if (toEmailIdInput.getText().equals("")) {
+			toEmailIdInput.sendKeys("testvendor@gmail.com");
+		}
 	}
 
 }

@@ -40,7 +40,9 @@ public class HomePage {
 	@FindBy(css = "button.olark-launch-button.olark-chat-tab.olark-size-md")
 	private WebElement envelopeIconsmallPictureOfAnEnvelope;
 
-	@FindBy(css = "#homeContainer div:nth-of-type(2) div:nth-of-type(6) div.home-widget-container div div:nth-of-type(2) div:nth-of-type(3) a")
+	// @FindBy(css = "#homeContainer div:nth-of-type(2) div:nth-of-type(6)
+	// div.home-widget-container div div:nth-of-type(2) div:nth-of-type(3) a")
+	@FindBy(xpath = "//span[text()='Expenses']")
 	private WebElement gotoExpenseList;
 
 	@FindBy(css = "#homeContainer div:nth-of-type(2) div:nth-of-type(4) div.home-widget-container div div:nth-of-type(2) div:nth-of-type(3) a")

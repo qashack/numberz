@@ -60,85 +60,94 @@ public class EmailPage extends TaxInvoicePage {
 		int et = emailTo.length();
 		int et1 = emailcc.length();
 		System.out.println("t and t1" + et + " :" + et1);
-		if ((et1 == 0) || (et == 0)) {
+		if ((et1==0) || (et==0)) 
+		{
 			Assert.assertFalse(true, "Email to and cc not populated Automatically");
-
+			
 		} else {
-
+			
 			Assert.assertTrue(true);
 		}
 		return this;
 	}
-
-	public EmailPage verifyEmailSubject(String data) {
-		String subject = emailSubjectField.getAttribute("value");
-		if (subject.contains(data)) {
-			Assert.assertFalse(true, "Subject not populated properly");
-		} else {
+	public EmailPage verifyEmailSubject(String data)
+	{
+		String subject=emailSubjectField.getAttribute("value");
+		if(subject.contains(data))
+		{
+			Assert.assertFalse(true,"Subject not populated properly");
+		}else
+		{
 			Assert.assertTrue(true);
 		}
-
+		
+		
 		return this;
 	}
-
-	public EmailPage verifyEmailBody(String data) {
+	public EmailPage verifyEmailBody(String data)
+	{
 		driver.switchTo().frame("react-tinymce-0_ifr");
-		String subject = emailBody.getText();
-		if (subject.contains(data)) {
-			Assert.assertFalse(true, "Subject not populated properly");
-		} else {
+		String subject=emailBody.getText();
+		if(subject.contains(data))
+		{
+			Assert.assertFalse(true,"Subject not populated properly");
+		}else
+		{
 			Assert.assertTrue(true);
 		}
-
+		
+		
 		return this;
 	}
-
-	public EmailPage clickOnGetFinance() {
+	public EmailPage clickOnGetFinance()
+	{
 		GenericUtils.delay(2);
-		if (!emailGetFinance.isSelected()) {
-			emailGetFinance.click();
-		}
-
+		emailGetFinance.click();
 		return this;
-
+		
 	}
-
-	public EmailPage verifyGetFianance(int k) {
-		System.out.println("k is" + k);
-		if (k > 0) {
-
-		} else {
+	public EmailPage verifyGetFianance(int k)
+	{
+		System.out.println("k is"+k);
+		if(k>0)
+		{
+			
+		}else
+		{
 			Assert.fail("Get fianance is not in recieved email");
 		}
 		return this;
 	}
-
-	public EmailPage setEmailTo(String email_to) {
+	public EmailPage setEmailTo(String email_to)
+	{
 		emailtoField1.clear();
 		emailtoField1.sendKeys(email_to);
 		return this;
 	}
-
-	public EmailPage clickOnPayNow() {
-		if (!emailPayNow.isSelected()) {
-			emailPayNow.click();
-		}
+	public EmailPage clickOnPayNow()
+	{
+		emailPayNow.click();
 		return this;
-
+		
 	}
-
-	public EmailPage verifyPaynowOptions() {
+	public EmailPage verifyPaynowOptions()
+	{
 		GenericUtils.delay(2);
-		int op1 = driver.findElements(By.id("rzp-key-number")).size();
-		int op2 = driver.findElements(By.id("rzp-secret-number")).size();
-		int op0 = driver.findElements(By.xpath("//label[text()='Select Payment Method']")).size();
-		if (op1 == 0 || op0 == 0 || op2 == 0) {
+		int op1=driver.findElements(By.id("rzp-key-number")).size();
+		int op2=driver.findElements(By.id("rzp-secret-number")).size();
+		int op0=driver.findElements(By.xpath("//label[text()='Select Payment Method']")).size();
+		if(op1==0 ||op0==0||op2==0)
+		{
 			Assert.fail("Pay now  all options are not displayed");
-		} else {
+		}else
+		{
 			Assert.assertTrue(true);
 		}
-
+		
 		return this;
 	}
-
+	
+	
+	
+	
 }

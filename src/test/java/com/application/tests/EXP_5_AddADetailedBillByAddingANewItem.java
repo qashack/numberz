@@ -7,6 +7,7 @@ import com.application.pages.Expenses;
 import com.application.pages.ExpensesBill;
 import com.application.pages.HomePage;
 import com.application.pages.ItemInfo;
+import com.application.pages.VendorInformation;
 
 public class EXP_5_AddADetailedBillByAddingANewItem extends BaseClass {
 	String expensesSheet = "EXP_5";
@@ -18,6 +19,7 @@ public class EXP_5_AddADetailedBillByAddingANewItem extends BaseClass {
 		Expenses expenses = new Expenses(driver);
 		ExpensesBill expensesBill = new ExpensesBill(driver);
 		ItemInfo item = new ItemInfo(driver);
+		VendorInformation vendorInfo = new VendorInformation(driver);
 
 		String vendor = ExcelLibrary.getExcelData(filePath_Expence, expensesSheet, 1, 0);
 		String billNumber = expensesBill.generateRandomBillNumber();
@@ -151,6 +153,8 @@ public class EXP_5_AddADetailedBillByAddingANewItem extends BaseClass {
 
 		expensesBill.clickSaveButton();
 		GenericUtils.delay(1);
+		
+		vendorInfo.clickOnYesButton();
 
 		expensesBill.verifyMessage();
 

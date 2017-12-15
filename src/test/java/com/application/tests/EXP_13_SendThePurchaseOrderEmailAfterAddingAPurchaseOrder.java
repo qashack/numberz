@@ -87,6 +87,8 @@ public class EXP_13_SendThePurchaseOrderEmailAfterAddingAPurchaseOrder extends B
 
 		expensesBill.verifyMessage();
 		GenericUtils.delay(2);
+		
+		expensesBill.checkToEmailIdIsEmpty();
 
 		purchaseOrder.sendEmailButtonClick();
 		//GenericUtils.delay(2);

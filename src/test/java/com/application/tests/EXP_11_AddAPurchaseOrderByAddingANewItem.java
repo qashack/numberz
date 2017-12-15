@@ -119,6 +119,8 @@ public class EXP_11_AddAPurchaseOrderByAddingANewItem extends BaseClass {
 
 		expensesBill.verifyMessage();
 		GenericUtils.delay(1);
+		
+		expensesBill.checkToEmailIdIsEmpty();
 
 		purchaseOrder.sendEmailButtonClick();
 		//GenericUtils.delay(2);
