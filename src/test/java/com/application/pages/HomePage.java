@@ -8,6 +8,9 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.application.libraries.JavascriptLibrary;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -40,9 +43,7 @@ public class HomePage {
 	@FindBy(css = "button.olark-launch-button.olark-chat-tab.olark-size-md")
 	private WebElement envelopeIconsmallPictureOfAnEnvelope;
 
-	// @FindBy(css = "#homeContainer div:nth-of-type(2) div:nth-of-type(6)
-	// div.home-widget-container div div:nth-of-type(2) div:nth-of-type(3) a")
-	@FindBy(xpath = "//span[text()='Expenses']")
+	@FindBy(css = "#homeContainer div:nth-of-type(2) div:nth-of-type(6) div.home-widget-container div div:nth-of-type(2) div:nth-of-type(3) a")
 	private WebElement gotoExpenseList;
 
 	@FindBy(css = "#homeContainer div:nth-of-type(2) div:nth-of-type(4) div.home-widget-container div div:nth-of-type(2) div:nth-of-type(3) a")
@@ -127,7 +128,8 @@ public class HomePage {
 	 * @return the HomePage class instance.
 	 */
 	public HomePage clickAddInvoice1Link() {
-		addInvoice1.click();
+		JavascriptLibrary.javascriptClickElement(driver, addInvoice1);
+		//addInvoice1.click();
 		return this;
 	}
 
@@ -137,7 +139,8 @@ public class HomePage {
 	 * @return the HomePage class instance.
 	 */
 	public HomePage clickAddInvoice2Link() {
-		addInvoice2.click();
+		JavascriptLibrary.javascriptClickElement(driver, addInvoice2);
+		//addInvoice2.click();
 		return this;
 	}
 

@@ -1149,8 +1149,11 @@ public class TaxInvoicePage {
 	}
 
 	public TaxInvoicePage setYesInSequenceOverride() {
-		driver.findElement(By.xpath("//button[@class='btn btn-modal-blue font-12 uppercase' and text()='Yes']"))
-				.click();
+//		if(driver.findElements(By.xpath("//button[@class='btn btn-modal-blue font-12 uppercase' and text()='Yes']")).size()>0)
+//		{
+//			driver.findElement(By.xpath("//button[@class='btn btn-modal-blue font-12 uppercase' and text()='Yes']")).click();
+//		}
+				
 		return this;
 	}
 
@@ -1179,7 +1182,8 @@ public class TaxInvoicePage {
 	}
 
 	public TaxInvoicePage addAnAttachment(String path) {
-		driver.findElement(By.cssSelector("input[type='file']")).sendKeys(path);
+		//driver.findElement(By.cssSelector("input[type='file']")).sendKeys(path);
+		driver.findElement(By.xpath("//div[@id='create-invoice-attachments']//input")).sendKeys(path);
 		return this;
 	}
 
